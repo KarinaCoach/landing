@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Коучинг 1:1 онлайн — APC</title>
+  <meta name="description" content="Сертифицированный коуч APC. 1:1 онлайн. Контракты 4/8/12 сессий. Ясность, структура и работа с ограничивающими убеждениями." />
+
+  <style>
+    :root{
+      /* Sage / Мудрец: спокойная база + тёплый акцент */
+      --bg: #0d1211;
+      --card: rgba(255,255,255,0.06);
+      --card2: rgba(255,255,255,0.08);
+      --text: rgba(255,255,255,0.9);
+      --muted: rgba(255,255,255,0.68);
+      --line: rgba(255,255,255,0.12);
+
+      --sage: #7aa58f;
+      --sage2: #99c3ad;
+      --sand: #e8dcc6;
+      --accent: #caa96a; /* тёплый “золото” */
+      --danger: #ff6b6b;
+
+      --radius: 18px;
+      --shadow: 0 18px 50px rgba(0,0,0,0.45);
+      --shadow2: 0 10px 30px rgba(0,0,0,0.35);
+
+      --max: 1160px;
+      --pad: clamp(18px, 2.2vw, 28px);
+      --h1: clamp(30px, 4vw, 48px);
+      --h2: clamp(22px, 2.6vw, 32px);
+      --h3: clamp(18px, 2.2vw, 22px);
+      --p: 16px;
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(800px 500px at 10% 10%, rgba(122,165,143,0.18), transparent 55%),
+        radial-gradient(900px 600px at 90% 20%, rgba(202,169,106,0.12), transparent 55%),
+        radial-gradient(900px 600px at 70% 100%, rgba(153,195,173,0.12), transparent 55%),
+        linear-gradient(180deg, #0b100f, #070a0a);
+      color: var(--text);
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    .container{ width: min(var(--max), calc(100% - 2*var(--pad))); margin: 0 auto; }
+
+    /* Top nav */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,10,10,0.62);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 0;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 650;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+    .dot{
+      width: 10px; height: 10px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--sage), var(--accent));
+      box-shadow: 0 0 0 4px rgba(122,165,143,0.12);
+    }
+    .menu{
+      display:flex;
+      align-items:center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .menu a{
+      font-size: 14px;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+    .menu a:hover{
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      cursor: pointer;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      font-weight: 600;
+      font-size: 14px;
+      user-select: none;
+    }
+    .btn:hover{
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.18);
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn-primary{
+      background: linear-gradient(135deg, rgba(122,165,143,0.95), rgba(202,169,106,0.9));
+      border-color: transparent;
+      color: #07100d;
+      box-shadow: 0 12px 30px rgba(122,165,143,0.18);
+    }
+    .btn-primary:hover{
+      filter: brightness(1.02);
+      box-shadow: 0 14px 34px rgba(122,165,143,0.22);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 52px 0 26px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 22px;
+      align-items: start;
+    }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: rgba(232,220,198,0.82);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+      padding: 8px 12px;
+      margin-bottom: 14px;
+    }
+    .kicker span{
+      color: rgba(7,16,13,0.92);
+      background: linear-gradient(135deg, var(--sage2), var(--sand));
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-transform: none;
+      letter-spacing: 0.2px;
+    }
+    h1{
+      margin: 0 0 12px;
+      font-size: var(--h1);
+      line-height: 1.05;
+      letter-spacing: -0.4px;
+    }
+    .lead{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 60ch;
+    }
+    .bullets{
+      display:grid;
+      gap: 10px;
+      margin: 18px 0 22px;
+      padding: 0;
+      list-style: none;
+    }
+    .bullets li{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      padding: 12px 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+    .check{
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      flex: 0 0 22px;
+      background: rgba(122,165,143,0.18);
+      border: 1px solid rgba(122,165,143,0.35);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-top: 1px;
+    }
+    .check svg{ width: 14px; height: 14px; fill: var(--sage2); }
+    .bullets b{ color: rgba(255,255,255,0.92); }
+    .cta-row{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items:center;
+      margin-top: 10px;
+    }
+    .note{
+      margin-top: 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .hero-card{
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+    }
+    .hero-photo{
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      display:block;
+      filter: contrast(1.02) saturate(1.02);
+    }
+    .hero-card-inner{
+      padding: 16px;
+      display:grid;
+      gap: 10px;
+    }
+    .mini{
+      display:flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(232,220,198,0.18);
+      background: rgba(232,220,198,0.06);
+      color: rgba(232,220,198,0.86);
+      white-space: nowrap;
+    }
+
+    /* Sections */
+    section{ padding: 34px 0; }
+    .section-head{
+      display:flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+    h2{
+      margin: 0;
+      font-size: var(--h2);
+      letter-spacing: -0.2px;
+      line-height: 1.15;
+    }
+    .sub{
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+      max-width: 70ch;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .card{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow2);
+    }
+    .card h3{
+      margin: 0 0 8px;
+      font-size: var(--h3);
+      letter-spacing: -0.1px;
+    }
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+    .list{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+    .list li{ margin: 6px 0; }
+    .highlight{
+      color: rgba(255,255,255,0.92);
+      font-weight: 650;
+    }
+
+    .pain{
+      display:grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .pain .item{
+      display:flex;
+      gap: 12px;
+      padding: 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      align-items:flex-start;
+    }
+    .pill{
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(122,165,143,0.30);
+      background: rgba(122,165,143,0.12);
+      color: rgba(153,195,173,0.95);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+
+    /* Photo blocks */
+    .photo-card{
+      padding: 0;
+      overflow: hidden;
+      display:grid;
+    }
+    .photo-card img{
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      display:block;
+    }
+    .photo-caption{
+      padding: 14px 16px 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    /* Packages */
+    .price{
+      display:flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 10px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: rgba(255,255,255,0.84);
+      font-size: 13px;
+    }
+    .tag{
+      display:inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(202,169,106,0.26);
+      background: rgba(202,169,106,0.10);
+      color: rgba(232,220,198,0.92);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+    .pkg{
+      position: relative;
+      overflow: hidden;
+    }
+    .pkg::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(450px 220px at 20% 10%, rgba(122,165,143,0.18), transparent 60%),
+                  radial-gradient(450px 220px at 80% 20%, rgba(202,169,106,0.16), transparent 60%);
+      pointer-events:none;
+      opacity: 0.8;
+    }
+    .pkg > *{ position: relative; }
+
+    /* FAQ */
+    details{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.02);
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor: pointer;
+      font-weight: 650;
+      color: rgba(255,255,255,0.9);
+      outline: none;
+    }
+    details p{
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* Final CTA */
+    .final{
+      border: 1px solid rgba(232,220,198,0.16);
+      background:
+        radial-gradient(800px 420px at 20% 10%, rgba(122,165,143,0.22), transparent 60%),
+        radial-gradient(700px 380px at 90% 20%, rgba(202,169,106,0.18), transparent 60%),
+        rgba(255,255,255,0.03);
+      border-radius: 26px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      align-items: center;
+      overflow:hidden;
+    }
+    .final h2{ margin-bottom: 6px; }
+    .final .sub{ max-width: 65ch; }
+
+    .final-photo{
+      border-radius: 22px;
+      overflow:hidden;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,0.2);
+    }
+    .final-photo img{
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display:block;
+      filter: contrast(1.02) saturate(1.02);
+    }
+
+    footer{
+      padding: 26px 0 40px;
+      color: rgba(255,255,255,0.52);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+      margin-top: 30px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .hero-photo{ height: 420px; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .grid-2{ grid-template-columns: 1fr; }
+      .final{ grid-template-columns: 1fr; }
+      .final-photo img{ height: 320px; }
+      .menu{ display:none; }
+      .nav-inner{ justify-content: space-between; }
+    }
+
+    /* Small helper for anchor offset with sticky nav */
+    .anchor{ position: relative; top: -76px; visibility: hidden; }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Коучинг 1:1 онлайн</span>
+      </a>
+
+      <nav class="menu" aria-label="Навигация">
+        <a href="#about">О коучинге</a>
+        <a href="#help">Чем помогу</a>
+        <a href="#format">Формат</a>
+        <a href="#packages">Контракты</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Запись</a>
+      </nav>
+
+      <a class="btn btn-primary" href="#contact">Записаться</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="kicker">
+          Архетип <span>Мудреца</span> · ясность · структура · глубина
+        </div>
+
+        <h1>Ясность вместо хаоса. Решения вместо сомнений.</h1>
+        <p class="lead">
+          Я — сертифицированный коуч <b>APC</b>. Помогаю навести порядок в мыслях, снять внутренние блоки
+          и выстроить понятные шаги к цели — в работе, деньгах, отношениях и самооценке.
+        </p>
+
+        <ul class="bullets">
+          <li>
+            <span class="check" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7z"/></svg>
+            </span>
+            <div><b>перестанешь “зависать”</b> в сомнениях и прокрастинации</div>
+          </li>
+          <li>
+            <span class="check" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7z"/></svg>
+            </span>
+            <div><b>увидишь, что мешает</b> (убеждения, страхи, внутренний конфликт)</div>
+          </li>
+          <li>
+            <span class="check" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7z"/></svg>
+            </span>
+            <div><b>соберёшь цель в план</b> и начнёшь действовать спокойно и последовательно</div>
+          </li>
+        </ul>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">Записаться на вводную встречу</a>
+          <a class="btn" href="#packages">Выбрать контракт 4 / 8 / 12</a>
+        </div>
+        <div class="note">Формат: 1:1 онлайн · Работаем по контракту: 4, 8 или 12 сессий</div>
+      </div>
+
+      <aside class="hero-card" aria-label="Фото и ключевая информация">
+        <!-- ЗАМЕНИ src НА СВОИ ФОТО -->
+        <img class="hero-photo" src="photo-1.jpg" alt="Портрет коуча" />
+        <div class="hero-card-inner">
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="badge">APC сертификация</span>
+            <span class="badge">1:1 онлайн</span>
+            <span class="badge">Контракт 4/8/12</span>
+          </div>
+          <div class="mini">
+            <span>Подход: спокойно, точно, по делу</span>
+            <a class="btn" href="#about" style="padding:10px 12px;">Что такое коучинг</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- SECTION: PAIN -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="anchor" id="help"></div>
+          <h2>Кому ко мне</h2>
+          <p class="sub">Если ты узнаёшь себя — мы можем это разобрать и превратить в понятный план действий.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Ситуации, с которыми часто приходят</h3>
+          <div class="pain">
+            <div class="item">
+              <span class="pill">Мысли</span>
+              <div>В голове много мыслей, а решения нет.</div>
+            </div>
+            <div class="item">
+              <span class="pill">Страх</span>
+              <div>Хочется изменений, но страшно “ошибиться” или “не получится”.</div>
+            </div>
+            <div class="item">
+              <span class="pill">Откаты</span>
+              <div>Цели есть, но действия нестабильные: то рывок, то откат.</div>
+            </div>
+            <div class="item">
+              <span class="pill">Напряжение</span>
+              <div>Выбираешь “правильно”, а внутри — напряжение и усталость.</div>
+            </div>
+            <div class="item">
+              <span class="pill">Потенциал</span>
+              <div>Есть ощущение, что потенциал больше, чем текущая жизнь.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card photo-card">
+          <!-- ЗАМЕНИ src НА СВОИ ФОТО -->
+          <img src="photo-2.jpg" alt="Портрет коуча на светлом фоне" />
+          <div class="photo-caption">
+            <span class="highlight">Важно:</span> коучинг не “мотивирует”, а даёт ясность и структуру, чтобы ты действовал(а) из опоры, а не из стресса.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: WHAT IS COACHING -->
+  <section>
+    <div class="container">
+      <div class="anchor" id="about"></div>
+      <div class="section-head">
+        <div>
+          <h2>Что такое коучинг</h2>
+          <p class="sub">Профессиональный процесс, где ты находишь собственные решения — и переводишь их в действия.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Коучинг — это процесс</h3>
+          <ol class="list">
+            <li>Формулируем реальную цель (не “хочу”, а “к чему и зачем”).</li>
+            <li>Находим, что мешает (убеждения, страхи, сценарии, привычки мышления).</li>
+            <li>Выбираем стратегию и шаги.</li>
+            <li>Закрепляем новое поведение и решения в реальной жизни.</li>
+          </ol>
+        </div>
+
+        <div class="card">
+          <h3>Как я работаю</h3>
+          <p>
+            <span class="highlight">Я не даю “советов как жить” и не читаю лекции.</span>
+            Я веду процесс так, чтобы ты сам(а) увидел(а) правильные для тебя ответы — и начал(а) действовать.
+          </p>
+          <div style="height:12px"></div>
+          <p>
+            Подход: спокойно, точно, по делу — без воды и без “магии мотивации”.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: HOW I HELP -->
+  <section>
+    <div class="container">
+      <div class="anchor" id="format"></div>
+      <div class="section-head">
+        <div>
+          <h2>Как я могу помочь</h2>
+          <p class="sub">Направления, с которыми чаще всего работаем в 1:1.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Ясность</h3>
+          <p>“Чего я хочу на самом деле и как к этому идти”.</p>
+        </div>
+        <div class="card">
+          <h3>Внутренний конфликт</h3>
+          <p>“Хочу — но не могу”: снимаем блок и собираем опору.</p>
+        </div>
+        <div class="card">
+          <h3>Ограничивающие убеждения</h3>
+          <p>Про деньги, ценность, страх оценки и “планку”.</p>
+        </div>
+        <div class="card">
+          <h3>Опора и границы</h3>
+          <p>Перестать тащить всё на себе и выбрать себя без вины.</p>
+        </div>
+        <div class="card">
+          <h3>Самореализация</h3>
+          <p>Выбор, переход, рост, новые цели и взрослые решения.</p>
+        </div>
+        <div class="card">
+          <h3>Структура действий</h3>
+          <p>План, шаги, фокус, устойчивость — без перегруза.</p>
+        </div>
+      </div>
+
+      <div style="height:14px"></div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Как проходят сессии</h3>
+          <ul class="list">
+            <li>точный фокус: что меняем сейчас</li>
+            <li>разбор причины, а не симптома</li>
+            <li>итог: решение + следующий шаг</li>
+            <li>между встречами — короткое наблюдение/практика (без перегруза)</li>
+          </ul>
+          <div style="height:10px"></div>
+          <p><span class="highlight">Формат:</span> 1:1 онлайн · <span class="highlight">Длительность:</span> укажи фактическую (например, 60–90 минут)</p>
+        </div>
+
+        <div class="card">
+          <h3>Почему контракт, а не “разовая”</h3>
+          <p>
+            Разовая встреча может дать инсайт. <span class="highlight">Контракт даёт результат</span>,
+            потому что мы успеваем раскрыть корень проблемы, заменить старые стратегии на рабочие
+            и закрепить изменения через действия и обратную связь.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: PACKAGES -->
+  <section>
+    <div class="container">
+      <div class="anchor" id="packages"></div>
+      <div class="section-head">
+        <div>
+          <h2>Контракты 4 / 8 / 12 сессий</h2>
+          <p class="sub">Выбирай по глубине запроса. Можно начать с 4 и продолжить, если хочется больше.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card pkg">
+          <h3>4 сессии — “Ясность и старт”</h3>
+          <p>Определить цель, убрать главный стоп-фактор, собрать первые шаги.</p>
+          <div class="price">
+            <span class="tag">Контракт 4</span>
+            <a class="btn" href="#contact">Записаться</a>
+          </div>
+        </div>
+
+        <div class="card pkg">
+          <h3>8 сессий — “Система и стабильность”</h3>
+          <p>Сменить привычку мышления, укрепить дисциплину, пройти изменения без откатов.</p>
+          <div class="price">
+            <span class="tag">Контракт 8</span>
+            <a class="btn" href="#contact">Записаться</a>
+          </div>
+        </div>
+
+        <div class="card pkg">
+          <h3>12 сессий — “Глубокая трансформация”</h3>
+          <p>Если тема тянется давно: повторяющиеся сценарии, страхи, самоценность, большой переход.</p>
+          <div class="price">
+            <span class="tag">Контракт 12</span>
+            <a class="btn" href="#contact">Записаться</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: ABOUT ME -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Обо мне</h2>
+          <p class="sub">Коротко и по делу: кто ведёт процесс и что ты можешь ожидать от работы.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Профессиональная база</h3>
+          <p>
+            Я сертифицированный коуч <span class="highlight">APC</span>. Работаю в формате <span class="highlight">1:1 онлайн</span>
+            и веду клиентов через ясность, структуру и работу с ограничивающими убеждениями.
+          </p>
+          <div style="height:12px"></div>
+          <p class="muted">
+            Мой стиль: спокойно, точно, без воды — чтобы ты мог(ла) принимать решения и внедрять их в реальность.
+          </p>
+        </div>
+
+        <div class="card photo-card">
+          <!-- ЗАМЕНИ src НА СВОИ ФОТО -->
+          <img src="photo-3.jpg" alt="Фото в деловом стиле" />
+          <div class="photo-caption">
+            <span class="highlight">Формат:</span> 1:1 онлайн · <span class="highlight">Контракты:</span> 4 / 8 / 12 сессий · <span class="highlight">Фокус:</span> ясность → решение → действия
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="container">
+      <div class="anchor" id="faq"></div>
+      <div class="section-head">
+        <div>
+          <h2>FAQ</h2>
+          <p class="sub">Короткие ответы на частые вопросы.</p>
+        </div>
+      </div>
+
+      <details>
+        <summary>Сколько нужно сессий?</summary>
+        <p>Зависит от запроса. Если хочешь не просто “понять”, а внедрить изменения — лучше контракт (4/8/12).</p>
+      </details>
+
+      <details>
+        <summary>Это терапия?</summary>
+        <p>Нет. Коучинг работает с целями, решениями, мышлением и действиями “здесь и сейчас”.</p>
+      </details>
+
+      <details>
+        <summary>Если я не знаю, чего хочу?</summary>
+        <p>Это нормальный запрос. Мы начинаем с прояснения: что важно, что мешает и куда реально двигаться.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section>
+    <div class="container">
+      <div class="anchor" id="contact"></div>
+
+      <div class="final">
+        <div>
+          <h2>Готов(а) перейти от “я думаю” к “я делаю”?</h2>
+          <p class="sub">
+            Если ты устал(а) жить “в голове” и хочешь ясных действий — давай начнём.
+            Первый шаг — вводная встреча, где мы определим запрос и поймём, какой контракт подойдёт.
+          </p>
+
+          <div class="cta-row" style="margin-top:14px;">
+            <!-- ВСТАВЬ СВОЮ ССЫЛКУ НА ЗАПИСЬ/КАЛЕНДАРЬ -->
+            <a class="btn btn-primary" href="https://example.com/book" target="_blank" rel="noopener">Записаться на вводную встречу</a>
+
+            <!-- ВСТАВЬ СВОИ КОНТАКТЫ -->
+            <a class="btn" href="https://t.me/your_username" target="_blank" rel="noopener">Написать в Telegram</a>
+            <a class="btn" href="https://wa.me/972000000000" target="_blank" rel="noopener">Написать в WhatsApp</a>
+          </div>
+
+          <div class="note">
+            Подсказка: вставь реальные ссылки в кнопки (календарь/мессенджер/Instagram).
+          </div>
+        </div>
+
+        <div class="final-photo" aria-label="Фото">
+          <!-- Можно оставить то же фото или поставить другое -->
+          <img src="photo-1.jpg" alt="Портрет коуча" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; gap:10px; justify-content:space-between; flex-wrap:wrap;">
+      <div>© <span id="y"></span> · Коучинг 1:1 онлайн</div>
+      <div style="color:rgba(255,255,255,0.42);">
+        Сертификация: APC · Формат: онлайн · Контракты: 4/8/12
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Optional: highlight current section in nav on scroll (simple)
+    // (Работает только на десктопе, где меню видно)
+    const sections = ["about","help","format","packages","faq","contact"]
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+
+    const links = Array.from(document.querySelectorAll(".menu a"));
+    function onScroll(){
+      const y = window.scrollY + 120;
+      let current = null;
+
+      for (const id of ["about","help","format","packages","faq","contact"]) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        if (top <= y) current = id;
+      }
+
+      links.forEach(a => {
+        const href = a.getAttribute("href") || "";
+        const active = current && href === "#" + current;
+        a.style.color = active ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0.68)";
+        a.style.borderColor = active ? "rgba(255,255,255,0.18)" : "transparent";
+        a.style.background = active ? "rgba(255,255,255,0.03)" : "transparent";
+      });
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  </script>
+</body>
+</html>
