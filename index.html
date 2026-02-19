@@ -4,34 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Коучинг 1:1 онлайн — APC</title>
-  <meta name="description" content="Сертифицированный коуч APC. 1:1 онлайн. Контракты 4/8/12 сессий. Ясность, структура и работа с ограничивающими убеждениями." />
+  <meta name="description" content="Коучинг 1:1 онлайн. Контракты 4/8/12 сессий. Ясность, структура и работа с ограничивающими убеждениями." />
 
   <style>
     :root{
-      /* Sage / Мудрец: спокойная база + тёплый акцент */
-      --bg: #0d1211;
-      --card: rgba(255,255,255,0.06);
-      --card2: rgba(255,255,255,0.08);
-      --text: rgba(255,255,255,0.9);
-      --muted: rgba(255,255,255,0.68);
-      --line: rgba(255,255,255,0.12);
+      /* Светлая бежево-песочная база */
+      --bg: #f4efe6;
+      --bg2:#efe6d7;
 
-      --sage: #7aa58f;
-      --sage2: #99c3ad;
+      --card: rgba(255,255,255,0.85);
+      --card2: rgba(255,255,255,0.92);
+      --text: rgba(20,18,16,0.92);
+      --muted: rgba(20,18,16,0.68);
+      --line: rgba(20,18,16,0.10);
+
+      --sage: #5f8f78;
+      --sage2:#7aa58f;
       --sand: #e8dcc6;
-      --accent: #caa96a; /* тёплый “золото” */
-      --danger: #ff6b6b;
+      --accent: #caa96a;
 
       --radius: 18px;
-      --shadow: 0 18px 50px rgba(0,0,0,0.45);
-      --shadow2: 0 10px 30px rgba(0,0,0,0.35);
+      --shadow: 0 18px 50px rgba(20,18,16,0.10);
+      --shadow2: 0 10px 30px rgba(20,18,16,0.08);
 
       --max: 1160px;
       --pad: clamp(18px, 2.2vw, 28px);
       --h1: clamp(30px, 4vw, 48px);
       --h2: clamp(22px, 2.6vw, 32px);
       --h3: clamp(18px, 2.2vw, 22px);
-      --p: 16px;
     }
 
     *{ box-sizing: border-box; }
@@ -40,10 +40,9 @@
       margin:0;
       font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
       background:
-        radial-gradient(800px 500px at 10% 10%, rgba(122,165,143,0.18), transparent 55%),
-        radial-gradient(900px 600px at 90% 20%, rgba(202,169,106,0.12), transparent 55%),
-        radial-gradient(900px 600px at 70% 100%, rgba(153,195,173,0.12), transparent 55%),
-        linear-gradient(180deg, #0b100f, #070a0a);
+        radial-gradient(900px 550px at 10% 10%, rgba(202,169,106,0.18), transparent 55%),
+        radial-gradient(900px 600px at 90% 20%, rgba(95,143,120,0.16), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
       color: var(--text);
     }
 
@@ -56,7 +55,7 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(14px);
-      background: rgba(7,10,10,0.62);
+      background: rgba(244,239,230,0.72);
       border-bottom: 1px solid var(--line);
     }
     .nav-inner{
@@ -70,19 +69,19 @@
       display:flex;
       align-items:center;
       gap: 10px;
-      font-weight: 650;
+      font-weight: 750;
       letter-spacing: 0.2px;
       white-space: nowrap;
     }
     .dot{
       width: 10px; height: 10px; border-radius: 999px;
-      background: linear-gradient(135deg, var(--sage), var(--accent));
-      box-shadow: 0 0 0 4px rgba(122,165,143,0.12);
+      background: linear-gradient(135deg, var(--sage2), var(--accent));
+      box-shadow: 0 0 0 4px rgba(122,165,143,0.16);
     }
     .menu{
       display:flex;
       align-items:center;
-      gap: 16px;
+      gap: 10px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
@@ -96,7 +95,7 @@
     .menu a:hover{
       color: var(--text);
       border-color: var(--line);
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.45);
     }
 
     .btn{
@@ -107,64 +106,40 @@
       padding: 12px 16px;
       border-radius: 999px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.65);
       color: var(--text);
       cursor: pointer;
       transition: transform .08s ease, background .2s ease, border-color .2s ease;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 14px;
       user-select: none;
     }
     .btn:hover{
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.85);
+      border-color: rgba(20,18,16,0.18);
     }
     .btn:active{ transform: translateY(1px); }
 
     .btn-primary{
-      background: linear-gradient(135deg, rgba(122,165,143,0.95), rgba(202,169,106,0.9));
+      background: linear-gradient(135deg, rgba(95,143,120,0.92), rgba(202,169,106,0.90));
       border-color: transparent;
-      color: #07100d;
-      box-shadow: 0 12px 30px rgba(122,165,143,0.18);
+      color: #0f1512;
+      box-shadow: 0 12px 30px rgba(95,143,120,0.14);
     }
     .btn-primary:hover{
-      filter: brightness(1.02);
-      box-shadow: 0 14px 34px rgba(122,165,143,0.22);
+      filter: brightness(1.03);
+      box-shadow: 0 14px 34px rgba(95,143,120,0.18);
     }
 
     /* Hero */
-    .hero{
-      padding: 52px 0 26px;
-    }
+    .hero{ padding: 52px 0 26px; }
     .hero-grid{
       display:grid;
       grid-template-columns: 1.25fr 0.95fr;
       gap: 22px;
       align-items: start;
     }
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      font-size: 13px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: rgba(232,220,198,0.82);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-      border-radius: 999px;
-      padding: 8px 12px;
-      margin-bottom: 14px;
-    }
-    .kicker span{
-      color: rgba(7,16,13,0.92);
-      background: linear-gradient(135deg, var(--sage2), var(--sand));
-      padding: 3px 10px;
-      border-radius: 999px;
-      font-weight: 700;
-      text-transform: none;
-      letter-spacing: 0.2px;
-    }
+
     h1{
       margin: 0 0 12px;
       font-size: var(--h1);
@@ -178,6 +153,7 @@
       line-height: 1.6;
       max-width: 60ch;
     }
+
     .bullets{
       display:grid;
       gap: 10px;
@@ -192,22 +168,24 @@
       padding: 12px 12px;
       border-radius: var(--radius);
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.78);
+      box-shadow: var(--shadow2);
     }
     .check{
       width: 22px;
       height: 22px;
       border-radius: 6px;
       flex: 0 0 22px;
-      background: rgba(122,165,143,0.18);
-      border: 1px solid rgba(122,165,143,0.35);
+      background: rgba(95,143,120,0.14);
+      border: 1px solid rgba(95,143,120,0.28);
       display:flex;
       align-items:center;
       justify-content:center;
       margin-top: 1px;
     }
-    .check svg{ width: 14px; height: 14px; fill: var(--sage2); }
-    .bullets b{ color: rgba(255,255,255,0.92); }
+    .check svg{ width: 14px; height: 14px; fill: var(--sage); }
+    .bullets b{ color: rgba(20,18,16,0.92); }
+
     .cta-row{
       display:flex;
       gap: 12px;
@@ -218,14 +196,14 @@
     .note{
       margin-top: 10px;
       font-size: 13px;
-      color: rgba(255,255,255,0.55);
+      color: rgba(20,18,16,0.55);
     }
 
     .hero-card{
       border-radius: 26px;
       overflow: hidden;
       border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      background: rgba(255,255,255,0.82);
       box-shadow: var(--shadow);
     }
     .hero-photo{
@@ -256,10 +234,11 @@
       gap: 8px;
       padding: 8px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(232,220,198,0.18);
-      background: rgba(232,220,198,0.06);
-      color: rgba(232,220,198,0.86);
+      border: 1px solid rgba(20,18,16,0.10);
+      background: rgba(255,255,255,0.86);
+      color: rgba(20,18,16,0.78);
       white-space: nowrap;
+      font-weight: 700;
     }
 
     /* Sections */
@@ -298,7 +277,7 @@
 
     .card{
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.82);
       border-radius: var(--radius);
       padding: 16px;
       box-shadow: var(--shadow2);
@@ -323,8 +302,8 @@
     }
     .list li{ margin: 6px 0; }
     .highlight{
-      color: rgba(255,255,255,0.92);
-      font-weight: 650;
+      color: rgba(20,18,16,0.92);
+      font-weight: 800;
     }
 
     .pain{
@@ -338,17 +317,17 @@
       padding: 12px;
       border-radius: var(--radius);
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
+      background: rgba(255,255,255,0.78);
       align-items:flex-start;
     }
     .pill{
       padding: 6px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(122,165,143,0.30);
-      background: rgba(122,165,143,0.12);
-      color: rgba(153,195,173,0.95);
+      border: 1px solid rgba(95,143,120,0.22);
+      background: rgba(95,143,120,0.10);
+      color: rgba(95,143,120,0.92);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0.2px;
       white-space: nowrap;
     }
@@ -374,29 +353,6 @@
     }
 
     /* Packages */
-    .price{
-      display:flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 10px;
-      padding-top: 12px;
-      border-top: 1px solid var(--line);
-      color: rgba(255,255,255,0.84);
-      font-size: 13px;
-    }
-    .tag{
-      display:inline-flex;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(202,169,106,0.26);
-      background: rgba(202,169,106,0.10);
-      color: rgba(232,220,198,0.92);
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 0.2px;
-      white-space: nowrap;
-    }
     .pkg{
       position: relative;
       overflow: hidden;
@@ -405,25 +361,53 @@
       content:"";
       position:absolute;
       inset:-2px;
-      background: radial-gradient(450px 220px at 20% 10%, rgba(122,165,143,0.18), transparent 60%),
-                  radial-gradient(450px 220px at 80% 20%, rgba(202,169,106,0.16), transparent 60%);
+      background: radial-gradient(450px 220px at 20% 10%, rgba(95,143,120,0.10), transparent 60%),
+                  radial-gradient(450px 220px at 80% 20%, rgba(202,169,106,0.10), transparent 60%);
       pointer-events:none;
-      opacity: 0.8;
+      opacity: 0.9;
     }
     .pkg > *{ position: relative; }
 
-    /* FAQ */
+    /* Testimonials */
+    .test-grid{
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .shot{
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.90);
+      box-shadow: var(--shadow2);
+    }
+    .shot img{
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display:block;
+    }
+    .shot .cap{
+      padding: 10px 12px 12px;
+      border-top: 1px solid var(--line);
+      color: rgba(20,18,16,0.62);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    /* Q&A (без "FAQ") */
     details{
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 12px 14px;
-      background: rgba(255,255,255,0.02);
+      background: rgba(255,255,255,0.82);
+      box-shadow: var(--shadow2);
     }
     details + details{ margin-top: 10px; }
     summary{
       cursor: pointer;
-      font-weight: 650;
-      color: rgba(255,255,255,0.9);
+      font-weight: 800;
+      color: rgba(20,18,16,0.92);
       outline: none;
     }
     details p{
@@ -435,11 +419,11 @@
 
     /* Final CTA */
     .final{
-      border: 1px solid rgba(232,220,198,0.16);
+      border: 1px solid rgba(20,18,16,0.10);
       background:
-        radial-gradient(800px 420px at 20% 10%, rgba(122,165,143,0.22), transparent 60%),
-        radial-gradient(700px 380px at 90% 20%, rgba(202,169,106,0.18), transparent 60%),
-        rgba(255,255,255,0.03);
+        radial-gradient(800px 420px at 20% 10%, rgba(95,143,120,0.12), transparent 60%),
+        radial-gradient(700px 380px at 90% 20%, rgba(202,169,106,0.14), transparent 60%),
+        rgba(255,255,255,0.80);
       border-radius: 26px;
       padding: 18px;
       box-shadow: var(--shadow);
@@ -456,7 +440,7 @@
       border-radius: 22px;
       overflow:hidden;
       border: 1px solid var(--line);
-      background: rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.85);
     }
     .final-photo img{
       width: 100%;
@@ -468,13 +452,17 @@
 
     footer{
       padding: 26px 0 40px;
-      color: rgba(255,255,255,0.52);
+      color: rgba(20,18,16,0.52);
       font-size: 13px;
       border-top: 1px solid var(--line);
       margin-top: 30px;
     }
 
     /* Responsive */
+    @media (max-width: 1100px){
+      .test-grid{ grid-template-columns: repeat(2, 1fr); }
+      .shot img{ height: 320px; }
+    }
     @media (max-width: 980px){
       .hero-grid{ grid-template-columns: 1fr; }
       .hero-photo{ height: 420px; }
@@ -484,6 +472,8 @@
       .final-photo img{ height: 320px; }
       .menu{ display:none; }
       .nav-inner{ justify-content: space-between; }
+      .test-grid{ grid-template-columns: 1fr; }
+      .shot img{ height: 360px; }
     }
 
     /* Small helper for anchor offset with sticky nav */
@@ -505,11 +495,12 @@
         <a href="#help">Чем помогу</a>
         <a href="#format">Формат</a>
         <a href="#packages">Контракты</a>
-        <a href="#faq">FAQ</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#qa">Вопросы</a>
         <a href="#contact">Запись</a>
       </nav>
 
-      <a class="btn btn-primary" href="#contact">Записаться</a>
+      <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться</a>
     </div>
   </header>
 
@@ -517,10 +508,6 @@
   <main id="top" class="hero">
     <div class="container hero-grid">
       <div>
-        <div class="kicker">
-          Архетип <span>Мудреца</span> · ясность · структура · глубина
-        </div>
-
         <h1>Ясность вместо хаоса. Решения вместо сомнений.</h1>
         <p class="lead">
           Я — сертифицированный коуч <b>APC</b>. Помогаю навести порядок в мыслях, снять внутренние блоки
@@ -549,20 +536,19 @@
         </ul>
 
         <div class="cta-row">
-          <a class="btn btn-primary" href="#contact">Записаться на вводную встречу</a>
-          <a class="btn" href="#packages">Выбрать контракт 4 / 8 / 12</a>
+          <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться на консультацию</a>
+          <a class="btn" href="#packages">Посмотреть контракты 4 / 8 / 12</a>
         </div>
         <div class="note">Формат: 1:1 онлайн · Работаем по контракту: 4, 8 или 12 сессий</div>
       </div>
 
       <aside class="hero-card" aria-label="Фото и ключевая информация">
-        <!-- ЗАМЕНИ src НА СВОИ ФОТО -->
         <img class="hero-photo" src="photo-1.jpg" alt="Портрет коуча" />
         <div class="hero-card-inner">
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
             <span class="badge">APC сертификация</span>
-            <span class="badge">1:1 онлайн</span>
-            <span class="badge">Контракт 4/8/12</span>
+            <span class="badge">Zoom</span>
+            <span class="badge">90 минут</span>
           </div>
           <div class="mini">
             <span>Подход: спокойно, точно, по делу</span>
@@ -612,7 +598,6 @@
         </div>
 
         <div class="card photo-card">
-          <!-- ЗАМЕНИ src НА СВОИ ФОТО -->
           <img src="photo-2.jpg" alt="Портрет коуча на светлом фоне" />
           <div class="photo-caption">
             <span class="highlight">Важно:</span> коучинг не “мотивирует”, а даёт ясность и структуру, чтобы ты действовал(а) из опоры, а не из стресса.
@@ -702,14 +687,12 @@
       <div class="grid-2">
         <div class="card">
           <h3>Как проходят сессии</h3>
-          <ul class="list">
-            <li>точный фокус: что меняем сейчас</li>
-            <li>разбор причины, а не симптома</li>
-            <li>итог: решение + следующий шаг</li>
-            <li>между встречами — короткое наблюдение/практика (без перегруза)</li>
-          </ul>
-          <div style="height:10px"></div>
-          <p><span class="highlight">Формат:</span> 1:1 онлайн · <span class="highlight">Длительность:</span> укажи фактическую (например, 60–90 минут)</p>
+          <p style="margin-top:10px; color: var(--muted); line-height: 1.75;">
+            <span class="highlight">Формат:</span> Zoom, 90 минут.<br>
+            <span class="highlight">Тебе нужно:</span> тихое место, стабильный интернет, вода, блокнот и ручка.<br>
+            <span class="highlight">Можно:</span> с телефона.<br>
+            <span class="highlight">Важно:</span> всё конфиденциально.
+          </p>
         </div>
 
         <div class="card">
@@ -739,81 +722,75 @@
         <div class="card pkg">
           <h3>4 сессии — “Ясность и старт”</h3>
           <p>Определить цель, убрать главный стоп-фактор, собрать первые шаги.</p>
-          <div class="price">
-            <span class="tag">Контракт 4</span>
-            <a class="btn" href="#contact">Записаться</a>
-          </div>
         </div>
 
         <div class="card pkg">
           <h3>8 сессий — “Система и стабильность”</h3>
           <p>Сменить привычку мышления, укрепить дисциплину, пройти изменения без откатов.</p>
-          <div class="price">
-            <span class="tag">Контракт 8</span>
-            <a class="btn" href="#contact">Записаться</a>
-          </div>
         </div>
 
         <div class="card pkg">
           <h3>12 сессий — “Глубокая трансформация”</h3>
           <p>Если тема тянется давно: повторяющиеся сценарии, страхи, самоценность, большой переход.</p>
-          <div class="price">
-            <span class="tag">Контракт 12</span>
-            <a class="btn" href="#contact">Записаться</a>
-          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION: ABOUT ME -->
+  <!-- SECTION: REVIEWS -->
   <section>
     <div class="container">
+      <div class="anchor" id="reviews"></div>
       <div class="section-head">
         <div>
-          <h2>Обо мне</h2>
-          <p class="sub">Коротко и по делу: кто ведёт процесс и что ты можешь ожидать от работы.</p>
+          <h2>Отзывы</h2>
+          <p class="sub">Добавь сюда 5 скриншотов переписок. Просто загрузи картинки в GitHub рядом с index.html.</p>
         </div>
       </div>
 
-      <div class="grid-2">
-        <div class="card">
-          <h3>Профессиональная база</h3>
-          <p>
-            Я сертифицированный коуч <span class="highlight">APC</span>. Работаю в формате <span class="highlight">1:1 онлайн</span>
-            и веду клиентов через ясность, структуру и работу с ограничивающими убеждениями.
-          </p>
-          <div style="height:12px"></div>
-          <p class="muted">
-            Мой стиль: спокойно, точно, без воды — чтобы ты мог(ла) принимать решения и внедрять их в реальность.
-          </p>
+      <div class="test-grid">
+        <!-- Загрузишь 5 скриншотов и назовёшь их так же -->
+        <div class="shot">
+          <img src="review-1.jpg" alt="Отзыв 1 (скриншот переписки)" />
+          <div class="cap">review-1.jpg</div>
         </div>
-
-        <div class="card photo-card">
-          <!-- ЗАМЕНИ src НА СВОИ ФОТО -->
-          <img src="photo-3.jpg" alt="Фото в деловом стиле" />
-          <div class="photo-caption">
-            <span class="highlight">Формат:</span> 1:1 онлайн · <span class="highlight">Контракты:</span> 4 / 8 / 12 сессий · <span class="highlight">Фокус:</span> ясность → решение → действия
-          </div>
+        <div class="shot">
+          <img src="review-2.jpg" alt="Отзыв 2 (скриншот переписки)" />
+          <div class="cap">review-2.jpg</div>
+        </div>
+        <div class="shot">
+          <img src="review-3.jpg" alt="Отзыв 3 (скриншот переписки)" />
+          <div class="cap">review-3.jpg</div>
+        </div>
+        <div class="shot">
+          <img src="review-4.jpg" alt="Отзыв 4 (скриншот переписки)" />
+          <div class="cap">review-4.jpg</div>
+        </div>
+        <div class="shot">
+          <img src="review-5.jpg" alt="Отзыв 5 (скриншот переписки)" />
+          <div class="cap">review-5.jpg</div>
         </div>
       </div>
+
+      <div style="height:12px"></div>
+      <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться</a>
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- Q&A (без пометки "FAQ") -->
   <section>
     <div class="container">
-      <div class="anchor" id="faq"></div>
+      <div class="anchor" id="qa"></div>
       <div class="section-head">
         <div>
-          <h2>FAQ</h2>
+          <h2>Вопросы</h2>
           <p class="sub">Короткие ответы на частые вопросы.</p>
         </div>
       </div>
 
       <details>
         <summary>Сколько нужно сессий?</summary>
-        <p>Зависит от запроса. Если хочешь не просто “понять”, а внедрить изменения — лучше контракт (4/8/12).</p>
+        <p>Нет одной цифры для всех — зависит от глубины запроса.</p>
       </details>
 
       <details>
@@ -838,25 +815,20 @@
           <h2>Готов(а) перейти от “я думаю” к “я делаю”?</h2>
           <p class="sub">
             Если ты устал(а) жить “в голове” и хочешь ясных действий — давай начнём.
-            Первый шаг — вводная встреча, где мы определим запрос и поймём, какой контракт подойдёт.
+            Первый шаг — написать мне в Telegram и договориться о консультации.
           </p>
 
           <div class="cta-row" style="margin-top:14px;">
-            <!-- ВСТАВЬ СВОЮ ССЫЛКУ НА ЗАПИСЬ/КАЛЕНДАРЬ -->
-            <a class="btn btn-primary" href="https://example.com/book" target="_blank" rel="noopener">Записаться на вводную встречу</a>
-
-            <!-- ВСТАВЬ СВОИ КОНТАКТЫ -->
-            <a class="btn" href="https://t.me/your_username" target="_blank" rel="noopener">Написать в Telegram</a>
-            <a class="btn" href="https://wa.me/972000000000" target="_blank" rel="noopener">Написать в WhatsApp</a>
+            <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться</a>
+            <a class="btn" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Написать в Telegram</a>
           </div>
 
           <div class="note">
-            Подсказка: вставь реальные ссылки в кнопки (календарь/мессенджер/Instagram).
+            Все кнопки записи ведут в Telegram: <span class="highlight">t.me/KarinaS_coach</span>
           </div>
         </div>
 
         <div class="final-photo" aria-label="Фото">
-          <!-- Можно оставить то же фото или поставить другое -->
           <img src="photo-1.jpg" alt="Портрет коуча" />
         </div>
       </div>
@@ -866,28 +838,22 @@
   <footer>
     <div class="container" style="display:flex; gap:10px; justify-content:space-between; flex-wrap:wrap;">
       <div>© <span id="y"></span> · Коучинг 1:1 онлайн</div>
-      <div style="color:rgba(255,255,255,0.42);">
-        Сертификация: APC · Формат: онлайн · Контракты: 4/8/12
+      <div style="color:rgba(20,18,16,0.52);">
+        Формат: Zoom · 90 минут · 1:1 онлайн
       </div>
     </div>
   </footer>
 
   <script>
-    // year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Optional: highlight current section in nav on scroll (simple)
-    // (Работает только на десктопе, где меню видно)
-    const sections = ["about","help","format","packages","faq","contact"]
-      .map(id => document.getElementById(id))
-      .filter(Boolean);
-
+    // Подсветка активного пункта меню (на десктопе)
     const links = Array.from(document.querySelectorAll(".menu a"));
     function onScroll(){
       const y = window.scrollY + 120;
       let current = null;
 
-      for (const id of ["about","help","format","packages","faq","contact"]) {
+      for (const id of ["about","help","format","packages","reviews","qa","contact"]) {
         const el = document.getElementById(id);
         if (!el) continue;
         const top = el.getBoundingClientRect().top + window.scrollY;
@@ -897,9 +863,9 @@
       links.forEach(a => {
         const href = a.getAttribute("href") || "";
         const active = current && href === "#" + current;
-        a.style.color = active ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0.68)";
-        a.style.borderColor = active ? "rgba(255,255,255,0.18)" : "transparent";
-        a.style.background = active ? "rgba(255,255,255,0.03)" : "transparent";
+        a.style.color = active ? "rgba(20,18,16,0.92)" : "rgba(20,18,16,0.68)";
+        a.style.borderColor = active ? "rgba(20,18,16,0.18)" : "transparent";
+        a.style.background = active ? "rgba(255,255,255,0.55)" : "transparent";
       });
     }
     window.addEventListener("scroll", onScroll, { passive: true });
