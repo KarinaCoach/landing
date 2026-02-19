@@ -8,7 +8,6 @@
 
   <style>
     :root{
-      /* Светлая бежево-песочная база */
       --bg: #f4efe6;
       --bg2:#efe6d7;
 
@@ -20,7 +19,6 @@
 
       --sage: #5f8f78;
       --sage2:#7aa58f;
-      --sand: #e8dcc6;
       --accent: #caa96a;
 
       --radius: 18px;
@@ -387,15 +385,8 @@
       object-fit: cover;
       display:block;
     }
-    .shot .cap{
-      padding: 10px 12px 12px;
-      border-top: 1px solid var(--line);
-      color: rgba(20,18,16,0.62);
-      font-size: 12px;
-      line-height: 1.45;
-    }
 
-    /* Q&A (без "FAQ") */
+    /* Q&A */
     details{
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -476,7 +467,6 @@
       .shot img{ height: 360px; }
     }
 
-    /* Small helper for anchor offset with sticky nav */
     .anchor{ position: relative; top: -76px; visibility: hidden; }
   </style>
 </head>
@@ -551,7 +541,7 @@
             <span class="badge">90 минут</span>
           </div>
           <div class="mini">
-            <span>Подход: спокойно, точно, по делу</span>
+            <span>Мой подход — структурная работа без воды.</span>
             <a class="btn" href="#about" style="padding:10px 12px;">Что такое коучинг</a>
           </div>
         </div>
@@ -600,7 +590,7 @@
         <div class="card photo-card">
           <img src="photo-2.jpg" alt="Портрет коуча на светлом фоне" />
           <div class="photo-caption">
-            <span class="highlight">Важно:</span> коучинг не “мотивирует”, а даёт ясность и структуру, чтобы ты действовал(а) из опоры, а не из стресса.
+            <span class="highlight">Важно:</span> коучинг даёт ясность и структуру, чтобы ты действовал(а) из опоры, а не из стресса.
           </div>
         </div>
       </div>
@@ -744,40 +734,25 @@
       <div class="section-head">
         <div>
           <h2>Отзывы</h2>
-          <p class="sub">Добавь сюда 5 скриншотов переписок. Просто загрузи картинки в GitHub рядом с index.html.</p>
+          <p class="sub">Скриншоты переписок (5 примеров).</p>
         </div>
       </div>
 
+      <!--
+        Загрузишь 5 скриншотов в GitHub рядом с index.html и назовёшь их:
+        review-1.jpg, review-2.jpg, review-3.jpg, review-4.jpg, review-5.jpg
+      -->
       <div class="test-grid">
-        <!-- Загрузишь 5 скриншотов и назовёшь их так же -->
-        <div class="shot">
-          <img src="review-1.jpg" alt="Отзыв 1 (скриншот переписки)" />
-          <div class="cap">review-1.jpg</div>
-        </div>
-        <div class="shot">
-          <img src="review-2.jpg" alt="Отзыв 2 (скриншот переписки)" />
-          <div class="cap">review-2.jpg</div>
-        </div>
-        <div class="shot">
-          <img src="review-3.jpg" alt="Отзыв 3 (скриншот переписки)" />
-          <div class="cap">review-3.jpg</div>
-        </div>
-        <div class="shot">
-          <img src="review-4.jpg" alt="Отзыв 4 (скриншот переписки)" />
-          <div class="cap">review-4.jpg</div>
-        </div>
-        <div class="shot">
-          <img src="review-5.jpg" alt="Отзыв 5 (скриншот переписки)" />
-          <div class="cap">review-5.jpg</div>
-        </div>
+        <div class="shot"><img src="review-1.jpg" alt="Отзыв 1 (скриншот переписки)" /></div>
+        <div class="shot"><img src="review-2.jpg" alt="Отзыв 2 (скриншот переписки)" /></div>
+        <div class="shot"><img src="review-3.jpg" alt="Отзыв 3 (скриншот переписки)" /></div>
+        <div class="shot"><img src="review-4.jpg" alt="Отзыв 4 (скриншот переписки)" /></div>
+        <div class="shot"><img src="review-5.jpg" alt="Отзыв 5 (скриншот переписки)" /></div>
       </div>
-
-      <div style="height:12px"></div>
-      <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться</a>
     </div>
   </section>
 
-  <!-- Q&A (без пометки "FAQ") -->
+  <!-- Q&A -->
   <section>
     <div class="container">
       <div class="anchor" id="qa"></div>
@@ -820,11 +795,6 @@
 
           <div class="cta-row" style="margin-top:14px;">
             <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться</a>
-            <a class="btn" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Написать в Telegram</a>
-          </div>
-
-          <div class="note">
-            Все кнопки записи ведут в Telegram: <span class="highlight">t.me/KarinaS_coach</span>
           </div>
         </div>
 
@@ -838,16 +808,13 @@
   <footer>
     <div class="container" style="display:flex; gap:10px; justify-content:space-between; flex-wrap:wrap;">
       <div>© <span id="y"></span> · Коучинг 1:1 онлайн</div>
-      <div style="color:rgba(20,18,16,0.52);">
-        Формат: Zoom · 90 минут · 1:1 онлайн
-      </div>
+      <div style="color:rgba(20,18,16,0.52);">Формат: Zoom · 90 минут · 1:1 онлайн</div>
     </div>
   </footer>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Подсветка активного пункта меню (на десктопе)
     const links = Array.from(document.querySelectorAll(".menu a"));
     function onScroll(){
       const y = window.scrollY + 120;
