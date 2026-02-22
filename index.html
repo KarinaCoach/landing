@@ -6,10 +6,10 @@
   <title>Коучинг 1:1 онлайн — APC</title>
   <meta name="description" content="Сертифицированный коуч APC. Контракты 4/8/12. Онлайн 1:1. Работа с внутренними блоками, целями и действиями." />
 
-  <!-- Manrope (Variant A) for headings -->
+  <!-- Manrope: Regular 400 for body, Bold for headings -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -31,37 +31,62 @@
 
       --max: 1160px;
       --pad: clamp(18px, 2.2vw, 28px);
-      --h1: clamp(34px, 4.4vw, 60px);
-      --h2: clamp(22px, 2.6vw, 32px);
+
+      /* ощутимая разница размеров */
+      --h1: clamp(38px, 4.8vw, 68px);
+      --h2: clamp(24px, 2.8vw, 34px);
       --h3: clamp(18px, 2.2vw, 22px);
+      --p: 16px;
     }
 
     *{ box-sizing: border-box; }
     html{ scroll-behavior: smooth; }
+
+    /* BODY = Manrope Regular (400) */
     body{
       margin:0;
-      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      font-family: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      font-weight: 400;
+      letter-spacing: -0.08px;
       background:
         radial-gradient(900px 550px at 10% 10%, rgba(202,169,106,0.18), transparent 55%),
         radial-gradient(900px 600px at 90% 20%, rgba(95,143,120,0.16), transparent 55%),
         linear-gradient(180deg, var(--bg), var(--bg2));
       color: var(--text);
+      font-size: var(--p);
+      line-height: 1.65;
     }
 
-    /* Headings use Manrope */
-    h1, h2, h3, summary, .brand {
-      font-family: "Manrope", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans";
+    /* HEADINGS = Manrope Bold */
+    h1, h2, h3, summary, .brand{
+      font-family: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      color: var(--text);
+      margin: 0;
     }
-
-    /* “Дороже”: чуть больше трекинг и аккуратнее веса */
     h1{
       font-weight: 800;
-      letter-spacing: -0.7px; /* чуть плотнее */
+      font-size: var(--h1);
+      line-height: 1.02;
+      letter-spacing: -0.8px;
     }
-    h2, h3, summary, .brand{
-      font-weight: 700;       /* менее “тяжело”, профессиональнее */
-      letter-spacing: -0.2px; /* лёгкая собранность */
+    h2{
+      font-weight: 800;
+      font-size: var(--h2);
+      line-height: 1.15;
+      letter-spacing: -0.35px;
     }
+    h3, summary, .brand{
+      font-weight: 700;
+      font-size: var(--h3);
+      letter-spacing: -0.2px;
+    }
+
+    /* обычный текст строго regular */
+    p, li, .sub, .lead, .menu a, .badge, .mini, footer, details p{
+      font-weight: 400;
+    }
+
+    b, strong{ font-weight: 700; }
 
     a{ color: inherit; text-decoration: none; }
     .container{ width: min(var(--max), calc(100% - 2*var(--pad))); margin: 0 auto; }
@@ -125,7 +150,7 @@
       color: var(--text);
       cursor: pointer;
       transition: transform .08s ease, background .2s ease, border-color .2s ease;
-      font-weight: 700;
+      font-weight: 700; /* кнопки пусть будут плотнее */
       font-size: 14px;
       user-select: none;
     }
@@ -154,13 +179,8 @@
       gap: 22px;
       align-items: start;
     }
-    h1{
-      margin: 0 0 10px;
-      font-size: var(--h1);
-      line-height: 1.03;
-    }
     .lead{
-      margin: 0 0 16px;
+      margin: 12px 0 16px;
       color: var(--muted);
       font-size: 18px;
       line-height: 1.6;
@@ -228,7 +248,6 @@
       background: rgba(255,255,255,0.86);
       color: rgba(20,18,16,0.78);
       white-space: nowrap;
-      font-weight: 700;
       font-size: 13px;
     }
     .mini{
@@ -251,29 +270,16 @@
       gap: 18px;
       margin-bottom: 14px;
     }
-    h2{
-      margin: 0;
-      font-size: var(--h2);
-      line-height: 1.15;
-    }
     .sub{
-      margin: 0;
+      margin: 6px 0 0;
       color: var(--muted);
       font-size: 15px;
       line-height: 1.55;
       max-width: 75ch;
     }
 
-    .grid-2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .grid-3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
+    .grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 
     .card{
       border: 1px solid var(--line);
@@ -282,17 +288,7 @@
       padding: 16px;
       box-shadow: var(--shadow2);
     }
-    h3{
-      margin: 0 0 8px;
-      font-size: var(--h3);
-      line-height: 1.18;
-    }
-    .card p{
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 15px;
-    }
+
     .list{
       margin: 10px 0 0;
       padding-left: 18px;
@@ -301,20 +297,12 @@
       font-size: 15px;
     }
     .list li{ margin: 6px 0; }
-    .highlight{
-      color: rgba(20,18,16,0.92);
-      font-weight: 800;
-    }
 
-    .pain{
-      display:grid;
-      gap: 10px;
-      margin-top: 10px;
-    }
+    .highlight{ color: rgba(20,18,16,0.92); font-weight: 700; }
+
+    .pain{ display:grid; gap: 10px; margin-top: 10px; }
     .pain .item{
-      display:flex;
-      gap: 12px;
-      padding: 12px;
+      display:flex; gap: 12px; padding: 12px;
       border-radius: var(--radius);
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.78);
@@ -327,15 +315,12 @@
       background: rgba(95,143,120,0.10);
       color: rgba(95,143,120,0.92);
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: 0.2px;
       white-space: nowrap;
     }
 
-    .pkg{
-      position: relative;
-      overflow: hidden;
-    }
+    .pkg{ position: relative; overflow: hidden; }
     .pkg::before{
       content:"";
       position:absolute;
@@ -348,11 +333,7 @@
     .pkg > *{ position: relative; }
 
     /* Testimonials */
-    .test-grid{
-      display:grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-    }
+    .test-grid{ display:grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
     .shot{
       border: 1px solid var(--line);
       border-radius: 16px;
@@ -360,12 +341,7 @@
       background: rgba(255,255,255,0.90);
       box-shadow: var(--shadow2);
     }
-    .shot img{
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display:block;
-    }
+    .shot img{ width: 100%; height: 260px; object-fit: cover; display:block; }
 
     /* Q&A */
     details{
@@ -376,16 +352,7 @@
       box-shadow: var(--shadow2);
     }
     details + details{ margin-top: 10px; }
-    summary{
-      cursor: pointer;
-      outline: none;
-    }
-    details p{
-      margin: 10px 0 0;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 15px;
-    }
+    summary{ cursor: pointer; outline: none; }
 
     /* Final CTA */
     .final{
@@ -403,9 +370,6 @@
       align-items: center;
       overflow:hidden;
     }
-    .final h2{ margin-bottom: 6px; }
-    .final .sub{ max-width: 65ch; }
-
     .final-photo{
       border-radius: 22px;
       overflow:hidden;
@@ -486,19 +450,19 @@
             <span class="check" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7z"/></svg>
             </span>
-            <div><b>перестанешь “зависать”</b> в сомнениях и прокрастинации</div>
+            <div><strong>перестанешь “зависать”</strong> в сомнениях и прокрастинации</div>
           </li>
           <li>
             <span class="check" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7z"/></svg>
             </span>
-            <div><b>увидишь, что мешает</b> (убеждения, страхи, внутренний конфликт)</div>
+            <div><strong>увидишь, что мешает</strong> (убеждения, страхи, внутренний конфликт)</div>
           </li>
           <li>
             <span class="check" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7z"/></svg>
             </span>
-            <div><b>соберёшь цель в план</b> и начнёшь действовать спокойно и последовательно</div>
+            <div><strong>соберёшь цель в план</strong> и начнёшь действовать спокойно и последовательно</div>
           </li>
         </ul>
       </div>
@@ -513,7 +477,6 @@
           </div>
           <div class="mini">
             <span>Мой подход — структурная работа без воды.</span>
-            <a class="btn" href="#contact" style="padding:10px 12px;">Запись</a>
           </div>
         </div>
       </aside>
@@ -545,7 +508,7 @@
         <div class="card">
           <h3>Как я работаю</h3>
           <p>
-            <b>Я не даю “советов как жить” и не читаю лекции.</b> Я веду процесс так,
+            <strong>Я не даю “советов как жить” и не читаю лекции.</strong> Я веду процесс так,
             чтобы ты сам(а) увидел(а) правильные для тебя ответы — и начал(а) действовать.
           </p>
           <div style="height:12px"></div>
@@ -581,12 +544,12 @@
         <div class="card">
           <h3>С чем работаем 1:1</h3>
           <div class="grid-3" style="grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
-            <div class="card" style="padding:12px; box-shadow:none;"><b>Ясность</b><br><span style="color: var(--muted);">цель и приоритет</span></div>
-            <div class="card" style="padding:12px; box-shadow:none;"><b>Внутренний конфликт</b><br><span style="color: var(--muted);">“хочу — но не могу”</span></div>
-            <div class="card" style="padding:12px; box-shadow:none;"><b>Ограничивающие убеждения</b><br><span style="color: var(--muted);">деньги, ценность, страх оценки</span></div>
-            <div class="card" style="padding:12px; box-shadow:none;"><b>Опора и границы</b><br><span style="color: var(--muted);">меньше напряжения</span></div>
-            <div class="card" style="padding:12px; box-shadow:none;"><b>Самореализация</b><br><span style="color: var(--muted);">выбор и рост</span></div>
-            <div class="card" style="padding:12px; box-shadow:none;"><b>Структура действий</b><br><span style="color: var(--muted);">план и шаги</span></div>
+            <div class="card" style="padding:12px; box-shadow:none;"><strong>Ясность</strong><br><span style="color: var(--muted);">цель и приоритет</span></div>
+            <div class="card" style="padding:12px; box-shadow:none;"><strong>Внутренний конфликт</strong><br><span style="color: var(--muted);">“хочу — но не могу”</span></div>
+            <div class="card" style="padding:12px; box-shadow:none;"><strong>Ограничивающие убеждения</strong><br><span style="color: var(--muted);">деньги, ценность, страх оценки</span></div>
+            <div class="card" style="padding:12px; box-shadow:none;"><strong>Опора и границы</strong><br><span style="color: var(--muted);">меньше напряжения</span></div>
+            <div class="card" style="padding:12px; box-shadow:none;"><strong>Самореализация</strong><br><span style="color: var(--muted);">выбор и рост</span></div>
+            <div class="card" style="padding:12px; box-shadow:none;"><strong>Структура действий</strong><br><span style="color: var(--muted);">план и шаги</span></div>
           </div>
 
           <div style="height:12px"></div>
@@ -701,18 +664,27 @@
         <summary>Это терапия?</summary>
         <p>Нет. Коучинг — это процесс про цели, решения и действия, а не про лечение или диагнозы.</p>
       </details>
+
+      <details>
+        <summary>Если я не знаю, чего хочу?</summary>
+        <p>Это нормальный запрос. Мы начнём с прояснения: что важно, что мешает и какой следующий шаг будет самым верным.</p>
+      </details>
     </div>
   </section>
 
-  <!-- FINAL CTA -->
+  <!-- ФИНАЛ БЕЗ (а) -->
   <section>
     <div class="container">
       <div class="anchor" id="contact"></div>
 
       <div class="final">
         <div>
-          <h2>Запись</h2>
-          <p class="sub">Напиши в Telegram и коротко опиши запрос — договоримся о консультации.</p>
+          <h2>Готов перейти от “я думаю” к “я делаю”?</h2>
+          <p class="sub">
+            Если устал жить “в голове” и хочешь ясных действий — давай начнём.
+            Первый шаг — написать мне в Telegram и договориться о консультации.
+          </p>
+
           <div style="height:14px"></div>
           <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться</a>
         </div>
