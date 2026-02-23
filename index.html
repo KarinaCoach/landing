@@ -310,6 +310,29 @@
       align-items:flex-start;
     }
 
+    .bridge-list{
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .bridge-list li{
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .bridge-list li::before{
+      content: "•";
+      color: var(--sage);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-top: 1px;
+    }
+
     /* PACKAGES */
     .pkg{ position: relative; overflow: hidden; }
     .pkg::before{
@@ -323,7 +346,7 @@
     }
     .pkg > *{ position: relative; }
 
-    /* REVIEWS — Variant 1: no cropping */
+    /* REVIEWS — no cropping */
     .test-grid{
       display:grid;
       grid-template-columns: repeat(5, 1fr);
@@ -585,6 +608,23 @@
             <div class="item"><span class="pill">Усталость</span><div>Выбираешь правильно, а внутри — напряжение и выгорание.</div></div>
             <div class="item"><span class="pill">Потенциал</span><div>Есть ощущение, что ты можешь больше, чем сейчас.</div></div>
           </div>
+        </div>
+
+        <div class="card">
+          <h3>Почему это не решается само</h3>
+          <div class="sp-8"></div>
+          <p class="muted">
+            Когда ты находишься внутри ситуации, сложно посмотреть на неё целиком: внимание цепляется за детали, мысли ходят по кругу, и решение откладывается.
+            Коучинг помогает увидеть главное, навести порядок в выборе и найти направление, в котором хочется двигаться.
+          </p>
+
+          <div class="sp-16"></div>
+          <p class="highlight">Что меняется после сессии:</p>
+          <ul class="bridge-list">
+            <li>появляется больше внутренней определённости</li>
+            <li>становится легче выбрать из вариантов</li>
+            <li>уходит ощущение тупика</li>
+          </ul>
         </div>
       </div>
     </div>
