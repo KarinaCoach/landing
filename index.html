@@ -15,7 +15,6 @@
       --bg: #f4efe6;
       --bg2:#efe6d7;
 
-      --card: rgba(255,255,255,0.86);
       --title: #000000;
       --text: #3a3a3a;
       --muted: rgba(58,58,58,0.78);
@@ -88,7 +87,6 @@
     .sp-8{ height: 8px; }
     .sp-12{ height: 12px; }
     .sp-16{ height: 16px; }
-    .sp-20{ height: 20px; }
 
     /* NAV */
     .nav{
@@ -137,36 +135,6 @@
       background: rgba(255,255,255,0.45);
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.65);
-      color: var(--title);
-      cursor: pointer;
-      transition: transform .08s ease, background .2s ease, border-color .2s ease;
-      font-weight: 700;
-      font-size: 14px;
-      user-select: none;
-      white-space: nowrap;
-    }
-    .btn:hover{
-      background: rgba(255,255,255,0.88);
-      border-color: rgba(20,18,16,0.18);
-    }
-    .btn:active{ transform: translateY(1px); }
-
-    .btn-primary{
-      background: linear-gradient(135deg, rgba(95,143,120,0.92), rgba(202,169,106,0.90));
-      border-color: transparent;
-      color: #0f1512;
-      box-shadow: 0 12px 30px rgba(95,143,120,0.14);
-    }
-
     /* HERO */
     .hero{ padding: 40px 0 10px; }
     .hero-grid{
@@ -181,18 +149,6 @@
       font-size: 18px;
       line-height: 1.6;
       max-width: 72ch;
-    }
-
-    .hero-actions{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-      align-items: center;
-    }
-    .micro{
-      font-size: 13px;
-      color: var(--muted);
     }
 
     .bullets{
@@ -354,9 +310,6 @@
       align-items:flex-start;
     }
 
-    .two-col-mini{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-    .mini-card{ padding: 12px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,255,255,0.70); }
-
     /* PACKAGES */
     .pkg{ position: relative; overflow: hidden; }
     .pkg::before{
@@ -393,6 +346,36 @@
     summary{ cursor: pointer; outline: none; }
 
     /* FINAL CTA */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.65);
+      color: var(--title);
+      cursor: pointer;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      font-weight: 700;
+      font-size: 14px;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .btn:hover{
+      background: rgba(255,255,255,0.88);
+      border-color: rgba(20,18,16,0.18);
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn-primary{
+      background: linear-gradient(135deg, rgba(95,143,120,0.92), rgba(202,169,106,0.90));
+      border-color: transparent;
+      color: #0f1512;
+      box-shadow: 0 12px 30px rgba(95,143,120,0.14);
+    }
+
     .final{
       border: 1px solid rgba(20,18,16,0.10);
       background:
@@ -423,34 +406,12 @@
     }
 
     footer{
-      padding: 26px 0 84px;
+      padding: 26px 0 40px;
       color: rgba(58,58,58,0.70);
       font-size: 13px;
       border-top: 1px solid var(--line);
       margin-top: 30px;
     }
-
-    /* MOBILE CTA */
-    .sticky-cta{
-      position: fixed;
-      left: 0; right: 0;
-      bottom: 0;
-      padding: 12px var(--pad);
-      background: rgba(244,239,230,0.86);
-      border-top: 1px solid var(--line);
-      backdrop-filter: blur(14px);
-      display: none;
-      z-index: 60;
-    }
-    .sticky-cta-inner{
-      width: min(var(--max), calc(100% - 2*var(--pad)));
-      margin: 0 auto;
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      justify-content: space-between;
-    }
-    .sticky-cta .micro{ display:none; }
 
     @media (max-width: 1100px){
       .test-grid{ grid-template-columns: repeat(2, 1fr); }
@@ -467,8 +428,6 @@
       .nav-inner{ justify-content: space-between; }
       .test-grid{ grid-template-columns: 1fr; }
       .shot img{ height: 360px; }
-      .sticky-cta{ display: block; }
-      footer{ padding-bottom: 110px; }
     }
 
     .anchor{ position: relative; top: -76px; visibility: hidden; }
@@ -492,8 +451,6 @@
         <a href="#qa">Вопросы</a>
         <a href="#contact">Запись</a>
       </nav>
-
-      <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться</a>
     </div>
   </header>
 
@@ -503,35 +460,27 @@
         <h1>Ясность вместо хаоса.<br>План вместо сомнений.</h1>
 
         <p class="lead">
-          Если в голове много мыслей, цели есть — а действий нет или они нестабильные,
-          на сессии мы <strong>разберём ситуацию</strong>, найдём, что мешает,
-          и соберём <strong>понятный план шагов</strong>.
+          Я — сертифицированный коуч APC. Помогаю навести порядок в мыслях, снять внутренние блоки и выстроить понятные шаги к цели — в работе, деньгах, отношениях и самооценке.
         </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться в Telegram</a>
-          <a class="btn" href="#format">Как проходит сессия</a>
-          <span class="micro">Zoom · 90 минут · конфиденциально</span>
-        </div>
 
         <ul class="bullets">
           <li>
             <span class="check" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7z"/></svg>
             </span>
-            <div><strong>Что получишь:</strong> ясность “что именно делать дальше” + 3–5 конкретных шагов</div>
+            <div><strong>Разберём</strong>, что сейчас реально происходит и почему “не двигается”.</div>
           </li>
           <li>
             <span class="check" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7z"/></svg>
             </span>
-            <div><strong>Что уберём:</strong> внутренний стоп (страх, сомнение, конфликт, “надо/хочу”)</div>
+            <div><strong>Найдём</strong> внутренний стоп (страх, конфликт, сомнение, перегруз).</div>
           </li>
           <li>
             <span class="check" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7z"/></svg>
             </span>
-            <div><strong>Как пойдёшь:</strong> спокойно и последовательно — из опоры, а не из стресса</div>
+            <div><strong>Соберём</strong> понятные шаги, чтобы стало легче действовать.</div>
           </li>
         </ul>
       </div>
@@ -567,36 +516,44 @@
       <div class="section-head">
         <div>
           <h2>Что такое коучинг</h2>
-          <p class="sub">Профессиональный процесс, где ты находишь свои решения — и переводишь их в действия.</p>
+          <p class="sub">Простыми словами — это разговор, после которого становится ясно, что делать дальше.</p>
         </div>
       </div>
 
       <div class="grid-2">
         <div class="card">
-          <h3>Коротко и по делу</h3>
+          <h3>Что это</h3>
+          <div class="sp-8"></div>
+          <p class="muted">
+            Коучинг — это структурированный диалог: мы раскладываем твою ситуацию по полкам,
+            отделяем важное от шума, находим точку, где ты застрял(а), и переводим это в конкретные решения и шаги.
+          </p>
+
+          <div class="sp-16"></div>
+          <h3>Для кого</h3>
+          <div class="sp-8"></div>
           <ul class="list">
-            <li><strong>Коучинг — это</strong> цель, ясность, выбор, план действий.</li>
-            <li><strong>Коучинг — не</strong> советы “как жить” и не мотивационные лекции.</li>
-            <li><strong>Важно:</strong> коучинг даёт ясность и структуру, чтобы действия были из опоры, а не из стресса.</li>
+            <li>Когда хочется изменений, но внутри много “но”.</li>
+            <li>Когда цель есть, а движения мало или оно рвётся рывками.</li>
+            <li>Когда важно выбрать направление и действовать без внутреннего давления.</li>
           </ul>
-          <div class="sp-12"></div>
-          <p class="muted">Если есть ощущение “я застрял(а)” — это нормальный запрос для коучинга.</p>
         </div>
 
         <div class="card">
-          <h3>Как я работаю</h3>
-          <p><strong>Я отвечаю за процесс, глубину и структуру.</strong></p>
+          <h3>Чем это полезно</h3>
           <div class="sp-8"></div>
-          <p>Ты — за действия между встречами. После каждой сессии у тебя есть короткий план, чтобы изменения не оставались “в голове”, а превращались в реальность.</p>
+          <ul class="list">
+            <li>Становится понятно, <strong>что именно мешает</strong> (а не “со мной что-то не так”).</li>
+            <li>Появляется <strong>ясное решение</strong> и план, который реально можно выполнить.</li>
+            <li>Возвращается ощущение контроля: меньше хаоса, больше опоры.</li>
+          </ul>
 
           <div class="sp-16"></div>
-          <h3>Что ты унесёшь с собой</h3>
-          <div class="two-col-mini">
-            <div class="mini-card"><strong>Ясность</strong><div class="muted">что важно и куда идти</div></div>
-            <div class="mini-card"><strong>Фокус</strong><div class="muted">что делать в первую очередь</div></div>
-            <div class="mini-card"><strong>План</strong><div class="muted">3–5 шагов на неделю</div></div>
-            <div class="mini-card"><strong>Опора</strong><div class="muted">меньше внутреннего шума</div></div>
-          </div>
+          <h3>Как я работаю</h3>
+          <div class="sp-8"></div>
+          <p class="muted">
+            Я отвечаю за процесс, глубину и структуру. Мы двигаемся спокойно, точно и по делу — без воды и без лекций.
+          </p>
         </div>
       </div>
     </div>
@@ -615,7 +572,6 @@
 
       <div class="grid-2">
         <div class="card">
-          <h3>Сигналы “пора разложить по полкам”</h3>
           <div class="pain">
             <div class="item"><span class="pill">Мысли</span><div>В голове много мыслей, а решения нет.</div></div>
             <div class="item"><span class="pill">Страх</span><div>Хочется изменений, но страшно “ошибиться” или “не получится”.</div></div>
@@ -627,27 +583,23 @@
 
         <div class="card">
           <h3>С чем работаем 1:1</h3>
-          <div class="two-col-mini">
-            <div class="mini-card"><strong>Ясность</strong><div class="muted">цель и приоритет</div></div>
-            <div class="mini-card"><strong>Внутренний конфликт</strong><div class="muted">“хочу — но не могу”</div></div>
-            <div class="mini-card"><strong>Убеждения</strong><div class="muted">деньги, ценность, страх оценки</div></div>
-            <div class="mini-card"><strong>Опора и границы</strong><div class="muted">меньше напряжения</div></div>
-            <div class="mini-card"><strong>Самореализация</strong><div class="muted">выбор и рост</div></div>
-            <div class="mini-card"><strong>Структура</strong><div class="muted">план и шаги</div></div>
-          </div>
+          <div class="sp-8"></div>
+          <ul class="list">
+            <li>ясность цели и приоритетов</li>
+            <li>внутренний конфликт “хочу — но не могу”</li>
+            <li>ограничивающие убеждения (деньги, ценность, страх оценки)</li>
+            <li>опора и личные границы</li>
+            <li>структура действий: план и шаги</li>
+          </ul>
 
           <div class="sp-16"></div>
           <h3>Как мы начнём</h3>
+          <div class="sp-8"></div>
           <ol class="list">
             <li>Ты описываешь ситуацию — я задаю вопросы и помогаю увидеть главное.</li>
             <li>Выделяем “узкое место” (что реально мешает) и варианты решения.</li>
             <li>Фиксируем план: 3–5 шагов и что будет маркером прогресса.</li>
           </ol>
-
-          <div class="sp-12"></div>
-          <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться</a>
-          <div class="sp-8"></div>
-          <div class="micro">Напиши “Хочу сессию” — и я задам 2–3 вопроса, чтобы понять запрос.</div>
         </div>
       </div>
     </div>
@@ -671,7 +623,6 @@
           <ul class="list">
             <li><span class="highlight">Формат:</span> Zoom, 90 минут.</li>
             <li><span class="highlight">Тебе нужно:</span> тихое место, интернет, вода, блокнот.</li>
-            <li><span class="highlight">После:</span> короткий план шагов (чтобы не “разошлось”).</li>
             <li><span class="highlight">Важно:</span> всё конфиденциально.</li>
           </ul>
         </div>
@@ -679,9 +630,9 @@
         <div class="card">
           <h3>Почему контракт, а не разовая</h3>
           <div class="sp-8"></div>
-          <p>Разовая встреча может дать ясность и облегчение. Контракт нужен, чтобы закрепить изменения и перевести их в устойчивые действия.</p>
-          <div class="sp-12"></div>
-          <p class="muted">Если сомневаешься, что выбрать — напиши мне, и мы подберём глубину под твой запрос.</p>
+          <p class="muted">
+            Разовая встреча может дать ясность и облегчение. Контракт нужен, чтобы закрепить изменения и пройти путь системно — без откатов.
+          </p>
         </div>
       </div>
     </div>
@@ -694,7 +645,7 @@
       <div class="section-head">
         <div>
           <h2>Контракты 4 / 8 / 12 сессий</h2>
-          <p class="sub">Простой ориентир, чтобы не гадать.</p>
+          <p class="sub">Выбор зависит от глубины запроса.</p>
         </div>
       </div>
 
@@ -702,24 +653,19 @@
         <div class="card pkg">
           <h3>4 сессии — “Ясность и старт”</h3>
           <div class="sp-8"></div>
-          <p class="muted">Когда нужно быстро навести порядок, выбрать направление и начать действовать.</p>
+          <p class="muted">Определить цель, убрать главный стоп-фактор, собрать первые шаги.</p>
         </div>
         <div class="card pkg">
           <h3>8 сессий — “Система и стабильность”</h3>
           <div class="sp-8"></div>
-          <p class="muted">Когда важно закрепить изменения и пройти путь без откатов.</p>
+          <p class="muted">Сделать изменения устойчивыми и пройти путь без откатов.</p>
         </div>
         <div class="card pkg">
           <h3>12 сессий — “Глубокая трансформация”</h3>
           <div class="sp-8"></div>
-          <p class="muted">Когда тема тянется давно и нужен устойчивый переход на новый уровень.</p>
+          <p class="muted">Для тем, которые тянутся давно, и больших жизненных переходов.</p>
         </div>
       </div>
-
-      <div class="sp-16"></div>
-      <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Хочу подобрать контракт</a>
-      <div class="sp-8"></div>
-      <div class="micro">Напиши “Подобрать контракт” — и я уточню пару вопросов.</div>
     </div>
   </section>
 
@@ -754,7 +700,7 @@
 
       <details>
         <summary>Сколько нужно сессий?</summary>
-        <p class="muted">Зависит от глубины запроса. Можно начать с 4, а дальше — по динамике. Я помогу выбрать.</p>
+        <p class="muted">Зависит от глубины запроса. Можно начать с 4, а дальше — по динамике.</p>
       </details>
 
       <details>
@@ -773,11 +719,6 @@
       <details>
         <summary>Если я не знаю, чего хочу?</summary>
         <p class="muted">Это нормальный запрос. Мы начнём с прояснения: что важно, что мешает и какой следующий шаг самый верный.</p>
-      </details>
-
-      <details>
-        <summary>Что мне написать, чтобы записаться?</summary>
-        <p class="muted">Напиши в Telegram: “Хочу сессию” + 1–2 предложения про ситуацию. Я задам несколько уточняющих вопросов и предложу следующий шаг.</p>
       </details>
     </div>
   </section>
@@ -798,8 +739,6 @@
 
           <div class="sp-16"></div>
           <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться</a>
-          <div class="sp-8"></div>
-          <div class="micro">Сообщение: “Хочу сессию”</div>
         </div>
 
         <div class="final-photo" aria-label="Фото">
@@ -816,40 +755,8 @@
     </div>
   </footer>
 
-  <!-- Sticky CTA (mobile) -->
-  <div class="sticky-cta" aria-label="Быстрая запись">
-    <div class="sticky-cta-inner">
-      <div class="micro">Готов(а) начать?</div>
-      <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться в Telegram</a>
-    </div>
-  </div>
-
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Active menu highlight
-    const links = Array.from(document.querySelectorAll(".menu a"));
-    function onScroll(){
-      const y = window.scrollY + 120;
-      let current = null;
-
-      for (const id of ["about","help","format","packages","reviews","qa","contact"]) {
-        const el = document.getElementById(id);
-        if (!el) continue;
-        const top = el.getBoundingClientRect().top + window.scrollY;
-        if (top <= y) current = id;
-      }
-
-      links.forEach(a => {
-        const href = a.getAttribute("href") || "";
-        const active = current && href === "#" + current;
-        a.style.color = active ? "#000000" : "rgba(58,58,58,0.78)";
-        a.style.borderColor = active ? "rgba(20,18,16,0.18)" : "transparent";
-        a.style.background = active ? "rgba(255,255,255,0.55)" : "transparent";
-      });
-    }
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
 
     // Hero dots indicator (photo/diploma)
     const gallery = document.getElementById("heroGallery");
@@ -862,6 +769,7 @@
       dot1.classList.toggle("active", idx === 0);
       dot2.classList.toggle("active", idx === 1);
     }
+
     if (gallery){
       gallery.addEventListener("scroll", () => window.requestAnimationFrame(setDots), { passive: true });
       window.addEventListener("resize", setDots, { passive: true });
