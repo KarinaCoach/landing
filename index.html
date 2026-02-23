@@ -4,12 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Коучинг 1:1 онлайн — APC</title>
-  <meta name="description" content="Сертифицированный коуч APC. Контракты 4/8/12. Онлайн 1:1. Работа с внутренними блоками, целями и действиями." />
+  <meta name="description" content="Коучинг 1:1 онлайн. Ясность, структура и план действий. Контракты 4/8/12 сессий. Конфиденциально." />
 
-  <!-- Manrope: Regular 400 for body, Bold for headings -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -17,8 +16,9 @@
       --bg2:#efe6d7;
 
       --card: rgba(255,255,255,0.86);
-      --text: rgba(20,18,16,0.92);
-      --muted: rgba(20,18,16,0.68);
+      --title: #000000;
+      --text: #3a3a3a;
+      --muted: rgba(58,58,58,0.78);
       --line: rgba(20,18,16,0.10);
 
       --sage: #5f8f78;
@@ -32,17 +32,17 @@
       --max: 1160px;
       --pad: clamp(18px, 2.2vw, 28px);
 
-      /* ощутимая разница размеров */
-      --h1: clamp(38px, 4.8vw, 68px);
+      --h1: clamp(36px, 4.6vw, 64px);
       --h2: clamp(24px, 2.8vw, 34px);
       --h3: clamp(18px, 2.2vw, 22px);
       --p: 16px;
+
+      --gap: 16px;
     }
 
     *{ box-sizing: border-box; }
     html{ scroll-behavior: smooth; }
 
-    /* BODY = Manrope Regular (400) */
     body{
       margin:0;
       font-family: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
@@ -57,41 +57,40 @@
       line-height: 1.65;
     }
 
-    /* HEADINGS = Manrope Bold */
     h1, h2, h3, summary, .brand{
       font-family: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-      color: var(--text);
+      color: var(--title);
       margin: 0;
+      font-weight: 700;
     }
     h1{
-      font-weight: 800;
       font-size: var(--h1);
       line-height: 1.02;
       letter-spacing: -0.8px;
     }
     h2{
-      font-weight: 800;
       font-size: var(--h2);
       line-height: 1.15;
       letter-spacing: -0.35px;
     }
     h3, summary, .brand{
-      font-weight: 700;
       font-size: var(--h3);
       letter-spacing: -0.2px;
     }
 
-    /* обычный текст строго regular */
-    p, li, .sub, .lead, .menu a, .badge, .mini, footer, details p{
-      font-weight: 400;
-    }
-
-    b, strong{ font-weight: 700; }
-
+    p{ margin: 0; }
+    b, strong{ font-weight: 700; color: var(--title); }
     a{ color: inherit; text-decoration: none; }
-    .container{ width: min(var(--max), calc(100% - 2*var(--pad))); margin: 0 auto; }
 
-    /* Top nav */
+    .container{ width: min(var(--max), calc(100% - 2*var(--pad))); margin: 0 auto; }
+    .muted{ color: var(--muted); }
+    .highlight{ color: var(--title); font-weight: 700; }
+    .sp-8{ height: 8px; }
+    .sp-12{ height: 12px; }
+    .sp-16{ height: 16px; }
+    .sp-20{ height: 20px; }
+
+    /* NAV */
     .nav{
       position: sticky;
       top: 0;
@@ -133,7 +132,7 @@
       border: 1px solid transparent;
     }
     .menu a:hover{
-      color: var(--text);
+      color: var(--title);
       border-color: var(--line);
       background: rgba(255,255,255,0.45);
     }
@@ -147,12 +146,13 @@
       border-radius: 999px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.65);
-      color: var(--text);
+      color: var(--title);
       cursor: pointer;
       transition: transform .08s ease, background .2s ease, border-color .2s ease;
-      font-weight: 700; /* кнопки пусть будут плотнее */
+      font-weight: 700;
       font-size: 14px;
       user-select: none;
+      white-space: nowrap;
     }
     .btn:hover{
       background: rgba(255,255,255,0.88);
@@ -166,45 +166,53 @@
       color: #0f1512;
       box-shadow: 0 12px 30px rgba(95,143,120,0.14);
     }
-    .btn-primary:hover{
-      filter: brightness(1.03);
-      box-shadow: 0 14px 34px rgba(95,143,120,0.18);
-    }
 
     /* HERO */
-    .hero{ padding: 44px 0 10px; }
+    .hero{ padding: 40px 0 10px; }
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 22px;
       align-items: start;
     }
     .lead{
-      margin: 12px 0 16px;
+      margin-top: 10px;
       color: var(--muted);
       font-size: 18px;
       line-height: 1.6;
       max-width: 72ch;
     }
 
+    .hero-actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      align-items: center;
+    }
+    .micro{
+      font-size: 13px;
+      color: var(--muted);
+    }
+
     .bullets{
       display:grid;
-      gap: 12px;
-      margin: 10px 0 0;
+      gap: 10px;
+      margin-top: 16px;
       padding: 0;
       list-style: none;
     }
     .bullets li{
       display:flex;
       gap: 12px;
-      align-items:center;
+      align-items:flex-start;
       padding: 14px 14px;
-      border-radius: 999px;
+      border-radius: var(--radius);
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.78);
       box-shadow: var(--shadow2);
-      font-size: 18px;
-      line-height: 1.35;
+      font-size: 16px;
+      line-height: 1.45;
     }
     .check{
       width: 26px;
@@ -216,6 +224,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
+      margin-top: 1px;
     }
     .check svg{ width: 16px; height: 16px; fill: var(--sage); }
 
@@ -226,13 +235,25 @@
       background: rgba(255,255,255,0.82);
       box-shadow: var(--shadow);
     }
+    .hero-gallery{
+      display:flex;
+      overflow-x:auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .hero-gallery::-webkit-scrollbar{ height: 8px; }
+    .hero-gallery::-webkit-scrollbar-thumb{ background: rgba(20,18,16,0.14); border-radius: 999px; }
+
     .hero-photo{
       width: 100%;
       height: 420px;
       object-fit: cover;
       display:block;
       filter: contrast(1.02) saturate(1.02);
+      flex: 0 0 100%;
+      scroll-snap-align: start;
     }
+
     .hero-card-inner{
       padding: 16px;
       display:grid;
@@ -246,7 +267,7 @@
       border-radius: 999px;
       border: 1px solid rgba(20,18,16,0.10);
       background: rgba(255,255,255,0.86);
-      color: rgba(20,18,16,0.78);
+      color: rgba(58,58,58,0.90);
       white-space: nowrap;
       font-size: 13px;
     }
@@ -260,8 +281,19 @@
       color: var(--muted);
       font-size: 13px;
     }
+    .dots{
+      display:flex;
+      gap: 6px;
+      align-items:center;
+      justify-content:center;
+    }
+    .dot-ind{
+      width: 8px; height: 8px; border-radius: 999px;
+      background: rgba(20,18,16,0.18);
+    }
+    .dot-ind.active{ background: rgba(20,18,16,0.55); }
 
-    /* Sections */
+    /* SECTIONS */
     section{ padding: 34px 0; }
     .section-head{
       display:flex;
@@ -271,14 +303,14 @@
       margin-bottom: 14px;
     }
     .sub{
-      margin: 6px 0 0;
+      margin-top: 6px;
       color: var(--muted);
       font-size: 15px;
       line-height: 1.55;
       max-width: 75ch;
     }
 
-    .grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
     .grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 
     .card{
@@ -298,16 +330,6 @@
     }
     .list li{ margin: 6px 0; }
 
-    .highlight{ color: rgba(20,18,16,0.92); font-weight: 700; }
-
-    .pain{ display:grid; gap: 10px; margin-top: 10px; }
-    .pain .item{
-      display:flex; gap: 12px; padding: 12px;
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.78);
-      align-items:flex-start;
-    }
     .pill{
       padding: 6px 10px;
       border-radius: 999px;
@@ -318,8 +340,24 @@
       font-weight: 700;
       letter-spacing: 0.2px;
       white-space: nowrap;
+      flex: 0 0 auto;
     }
 
+    .pain{ display:grid; gap: 10px; margin-top: 10px; }
+    .pain .item{
+      display:flex;
+      gap: 12px;
+      padding: 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.78);
+      align-items:flex-start;
+    }
+
+    .two-col-mini{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .mini-card{ padding: 12px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,255,255,0.70); }
+
+    /* PACKAGES */
     .pkg{ position: relative; overflow: hidden; }
     .pkg::before{
       content:"";
@@ -332,7 +370,7 @@
     }
     .pkg > *{ position: relative; }
 
-    /* Testimonials */
+    /* REVIEWS */
     .test-grid{ display:grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
     .shot{
       border: 1px solid var(--line);
@@ -354,7 +392,7 @@
     details + details{ margin-top: 10px; }
     summary{ cursor: pointer; outline: none; }
 
-    /* Final CTA */
+    /* FINAL CTA */
     .final{
       border: 1px solid rgba(20,18,16,0.10);
       background:
@@ -385,12 +423,34 @@
     }
 
     footer{
-      padding: 26px 0 40px;
-      color: rgba(20,18,16,0.52);
+      padding: 26px 0 84px;
+      color: rgba(58,58,58,0.70);
       font-size: 13px;
       border-top: 1px solid var(--line);
       margin-top: 30px;
     }
+
+    /* MOBILE CTA */
+    .sticky-cta{
+      position: fixed;
+      left: 0; right: 0;
+      bottom: 0;
+      padding: 12px var(--pad);
+      background: rgba(244,239,230,0.86);
+      border-top: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+      display: none;
+      z-index: 60;
+    }
+    .sticky-cta-inner{
+      width: min(var(--max), calc(100% - 2*var(--pad)));
+      margin: 0 auto;
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      justify-content: space-between;
+    }
+    .sticky-cta .micro{ display:none; }
 
     @media (max-width: 1100px){
       .test-grid{ grid-template-columns: repeat(2, 1fr); }
@@ -407,7 +467,8 @@
       .nav-inner{ justify-content: space-between; }
       .test-grid{ grid-template-columns: 1fr; }
       .shot img{ height: 360px; }
-      .bullets li{ border-radius: var(--radius); }
+      .sticky-cta{ display: block; }
+      footer{ padding-bottom: 110px; }
     }
 
     .anchor{ position: relative; top: -76px; visibility: hidden; }
@@ -424,7 +485,7 @@
 
       <nav class="menu" aria-label="Навигация">
         <a href="#about">О коучинге</a>
-        <a href="#help">Чем помогу</a>
+        <a href="#help">Ситуации</a>
         <a href="#format">Формат</a>
         <a href="#packages">Контракты</a>
         <a href="#reviews">Отзывы</a>
@@ -436,119 +497,157 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <main id="top" class="hero">
     <div class="container hero-grid">
       <div>
-        <h1>Ясность вместо хаоса.<br>Решения вместо сомнений.</h1>
+        <h1>Ясность вместо хаоса.<br>План вместо сомнений.</h1>
+
         <p class="lead">
-          Я — сертифицированный коуч APC. Помогаю навести порядок в мыслях, снять внутренние блоки и выстроить понятные шаги к цели — в работе, деньгах, отношениях и самооценке.
+          Если в голове много мыслей, цели есть — а действий нет или они нестабильные,
+          на сессии мы <strong>разберём ситуацию</strong>, найдём, что мешает,
+          и соберём <strong>понятный план шагов</strong>.
         </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться в Telegram</a>
+          <a class="btn" href="#format">Как проходит сессия</a>
+          <span class="micro">Zoom · 90 минут · конфиденциально</span>
+        </div>
 
         <ul class="bullets">
           <li>
             <span class="check" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7z"/></svg>
             </span>
-            <div><strong>перестанешь “зависать”</strong> в сомнениях и прокрастинации</div>
+            <div><strong>Что получишь:</strong> ясность “что именно делать дальше” + 3–5 конкретных шагов</div>
           </li>
           <li>
             <span class="check" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7z"/></svg>
             </span>
-            <div><strong>увидишь, что мешает</strong> (убеждения, страхи, внутренний конфликт)</div>
+            <div><strong>Что уберём:</strong> внутренний стоп (страх, сомнение, конфликт, “надо/хочу”)</div>
           </li>
           <li>
             <span class="check" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.4-1.4 2.9 2.9 8-8L18.6 7z"/></svg>
             </span>
-            <div><strong>соберёшь цель в план</strong> и начнёшь действовать спокойно и последовательно</div>
+            <div><strong>Как пойдёшь:</strong> спокойно и последовательно — из опоры, а не из стресса</div>
           </li>
         </ul>
       </div>
 
-      <aside class="hero-card" aria-label="Фото и ключевая информация">
-        <img class="hero-photo" src="photo-1.jpg" alt="Портрет" />
+      <aside class="hero-card" aria-label="Фото и диплом">
+        <div class="hero-gallery" id="heroGallery" aria-label="Листай: фото и диплом">
+          <img class="hero-photo" src="photo-1.jpg" alt="Портрет" loading="lazy" />
+          <img class="hero-photo" src="diploma.jpg" alt="Диплом APC" loading="lazy" />
+        </div>
+
         <div class="hero-card-inner">
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
             <span class="badge">Сертифицированный коуч APC</span>
-  
+            <span class="badge">Листай → диплом</span>
           </div>
+
           <div class="mini">
-            <span>Ясность → структура → действие. Без воды, с результатом.</span>
+            <span class="muted">Ясность → структура → действие</span>
+            <div class="dots" aria-label="Индикатор">
+              <span class="dot-ind active" id="dot1"></span>
+              <span class="dot-ind" id="dot2"></span>
+            </div>
           </div>
         </div>
       </aside>
     </div>
   </main>
 
-  <!-- ЧТО ТАКОЕ КОУЧИНГ -->
+  <!-- О КОУЧИНГЕ -->
   <section>
     <div class="container">
       <div class="anchor" id="about"></div>
       <div class="section-head">
         <div>
           <h2>Что такое коучинг</h2>
-          <p class="sub">Профессиональный процесс, где ты находишь собственные решения — и переводишь их в действия.</p>
+          <p class="sub">Профессиональный процесс, где ты находишь свои решения — и переводишь их в действия.</p>
         </div>
       </div>
 
       <div class="grid-2">
         <div class="card">
-          <h3>Коучинг — это процесс</h3>
-          <ol class="list">
-            <li>Формулируем реальную цель (не “хочу”, а “к чему и зачем”).</li>
-            <li>Находим, что мешает (убеждения, страхи, сценарии, привычки мышления).</li>
-            <li>Выбираем стратегию и шаги.</li>
-            <li>Закрепляем новое поведение и решения в реальной жизни.</li>
-          </ol>
+          <h3>Коротко и по делу</h3>
+          <ul class="list">
+            <li><strong>Коучинг — это</strong> цель, ясность, выбор, план действий.</li>
+            <li><strong>Коучинг — не</strong> советы “как жить” и не мотивационные лекции.</li>
+            <li><strong>Важно:</strong> коучинг даёт ясность и структуру, чтобы действия были из опоры, а не из стресса.</li>
+          </ul>
+          <div class="sp-12"></div>
+          <p class="muted">Если есть ощущение “я застрял(а)” — это нормальный запрос для коучинга.</p>
         </div>
+
         <div class="card">
           <h3>Как я работаю</h3>
-          <p>
-            <strong>Я не даю “советов как жить” и не читаю лекции.</strong> 
-<p>Я отвечаю за процесс, глубину и структуру. Ты — за действия между встречами. Поэтому после каждой сессии у тебя есть короткий план, чтобы изменения не оставались “в голове”, а превращались в реальность.</p>
+          <p><strong>Я отвечаю за процесс, глубину и структуру.</strong></p>
+          <div class="sp-8"></div>
+          <p>Ты — за действия между встречами. После каждой сессии у тебя есть короткий план, чтобы изменения не оставались “в голове”, а превращались в реальность.</p>
+
+          <div class="sp-16"></div>
+          <h3>Что ты унесёшь с собой</h3>
+          <div class="two-col-mini">
+            <div class="mini-card"><strong>Ясность</strong><div class="muted">что важно и куда идти</div></div>
+            <div class="mini-card"><strong>Фокус</strong><div class="muted">что делать в первую очередь</div></div>
+            <div class="mini-card"><strong>План</strong><div class="muted">3–5 шагов на неделю</div></div>
+            <div class="mini-card"><strong>Опора</strong><div class="muted">меньше внутреннего шума</div></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ЧЕМ ПОМОГУ -->
+  <!-- СИТУАЦИИ -->
   <section>
     <div class="container">
       <div class="anchor" id="help"></div>
       <div class="section-head">
         <div>
-          <h2>Кому ко мне и чем я помогу</h2>
-          <p class="sub">Если узнаешь себя — разберем ситуацию и соберем понятный план действий.</p>
+          <h2>Ситуации, с которыми часто приходят</h2>
+          <p class="sub">Если узнаёшь себя — разберём ситуацию и соберём понятный план действий.</p>
         </div>
       </div>
 
       <div class="grid-2">
         <div class="card">
-          <h3>Ситуации, с которыми часто приходят</h3>
+          <h3>Сигналы “пора разложить по полкам”</h3>
           <div class="pain">
             <div class="item"><span class="pill">Мысли</span><div>В голове много мыслей, а решения нет.</div></div>
             <div class="item"><span class="pill">Страх</span><div>Хочется изменений, но страшно “ошибиться” или “не получится”.</div></div>
-            <div class="item"><span class="pill">Откаты</span><div>Цели есть, но действия нестабильные: то рывок, то ничего не делаешь.</div></div>
-            <div class="item"><span class="pill">Напряжение</span><div>Выбираешь “правильно”, а внутри — напряжение и усталость.</div></div>
-            <div class="item"><span class="pill">Потенциал</span><div>Есть ощущение, что ты можешь больше, чем то, как ты живешь сейчас.</div></div>
+            <div class="item"><span class="pill">Откаты</span><div>Цели есть, но действия нестабильные: то рывок, то пауза.</div></div>
+            <div class="item"><span class="pill">Усталость</span><div>Выбираешь “правильно”, а внутри — напряжение и выгорание.</div></div>
+            <div class="item"><span class="pill">Потенциал</span><div>Есть ощущение, что ты можешь больше, чем сейчас.</div></div>
           </div>
         </div>
 
         <div class="card">
           <h3>С чем работаем 1:1</h3>
-          <div class="grid-3" style="grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
-            <div class="card" style="padding:12px; box-shadow:none;"><strong>Ясность</strong><br><span style="color: var(--muted);">цель и приоритет</span></div>
-            <div class="card" style="padding:12px; box-shadow:none;"><strong>Внутренний конфликт</strong><br><span style="color: var(--muted);">“хочу — но не могу”</span></div>
-            <div class="card" style="padding:12px; box-shadow:none;"><strong>Ограничивающие убеждения</strong><br><span style="color: var(--muted);">деньги, ценность, страх оценки</span></div>
-            <div class="card" style="padding:12px; box-shadow:none;"><strong>Опора и границы</strong><br><span style="color: var(--muted);">меньше напряжения</span></div>
-            <div class="card" style="padding:12px; box-shadow:none;"><strong>Самореализация</strong><br><span style="color: var(--muted);">выбор и рост</span></div>
-            <div class="card" style="padding:12px; box-shadow:none;"><strong>Структура действий</strong><br><span style="color: var(--muted);">план и шаги</span></div>
+          <div class="two-col-mini">
+            <div class="mini-card"><strong>Ясность</strong><div class="muted">цель и приоритет</div></div>
+            <div class="mini-card"><strong>Внутренний конфликт</strong><div class="muted">“хочу — но не могу”</div></div>
+            <div class="mini-card"><strong>Убеждения</strong><div class="muted">деньги, ценность, страх оценки</div></div>
+            <div class="mini-card"><strong>Опора и границы</strong><div class="muted">меньше напряжения</div></div>
+            <div class="mini-card"><strong>Самореализация</strong><div class="muted">выбор и рост</div></div>
+            <div class="mini-card"><strong>Структура</strong><div class="muted">план и шаги</div></div>
           </div>
 
-          <div style="height:12px"></div>
-          <p class="sub"><span class="highlight">Важно:</span> коучинг даёт ясность и структуру, чтобы действия были из опоры, а не из стресса.</p>
+          <div class="sp-16"></div>
+          <h3>Как мы начнём</h3>
+          <ol class="list">
+            <li>Ты описываешь ситуацию — я задаю вопросы и помогаю увидеть главное.</li>
+            <li>Выделяем “узкое место” (что реально мешает) и варианты решения.</li>
+            <li>Фиксируем план: 3–5 шагов и что будет маркером прогресса.</li>
+          </ol>
+
+          <div class="sp-12"></div>
+          <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться</a>
+          <div class="sp-8"></div>
+          <div class="micro">Напиши “Хочу сессию” — и я задам 2–3 вопроса, чтобы понять запрос.</div>
         </div>
       </div>
     </div>
@@ -561,24 +660,28 @@
       <div class="section-head">
         <div>
           <h2>Формат работы</h2>
-          <p class="sub">Онлайн сессии. </p>
+          <p class="sub">Онлайн. 90 минут. Конфиденциально.</p>
         </div>
       </div>
 
       <div class="grid-2">
         <div class="card">
-          <h3>Как проходят сессии</h3>
-          <p style="margin-top:10px; color: var(--muted); line-height: 1.75;">
-            <span class="highlight">Формат:</span> Zoom, 90 минут.<br>
-            <span class="highlight">Тебе нужно:</span> тихое место, стабильный интернет, вода, блокнот и ручка.<br>
-            <span class="highlight">Можно:</span> с телефона или ноутбука.<br>
-            <span class="highlight">Важно:</span> всё конфиденциально.
-          </p>
+          <h3>Как проходит сессия</h3>
+          <div class="sp-8"></div>
+          <ul class="list">
+            <li><span class="highlight">Формат:</span> Zoom, 90 минут.</li>
+            <li><span class="highlight">Тебе нужно:</span> тихое место, интернет, вода, блокнот.</li>
+            <li><span class="highlight">После:</span> короткий план шагов (чтобы не “разошлось”).</li>
+            <li><span class="highlight">Важно:</span> всё конфиденциально.</li>
+          </ul>
         </div>
 
         <div class="card">
-          <h3>Почему контракт, а не “разовая”</h3>
-          <p>Разовая встреча может дать инсайт(озарение). Контракт нужен, чтобы закрепить изменения и перевести их в устойчивые действия.</p>
+          <h3>Почему контракт, а не разовая</h3>
+          <div class="sp-8"></div>
+          <p>Разовая встреча может дать ясность и облегчение. Контракт нужен, чтобы закрепить изменения и перевести их в устойчивые действия.</p>
+          <div class="sp-12"></div>
+          <p class="muted">Если сомневаешься, что выбрать — напиши мне, и мы подберём глубину под твой запрос.</p>
         </div>
       </div>
     </div>
@@ -591,24 +694,32 @@
       <div class="section-head">
         <div>
           <h2>Контракты 4 / 8 / 12 сессий</h2>
-          <p class="sub">Выбор зависит от глубины запроса.</p>
+          <p class="sub">Простой ориентир, чтобы не гадать.</p>
         </div>
       </div>
 
       <div class="grid-3">
         <div class="card pkg">
           <h3>4 сессии — “Ясность и старт”</h3>
-          <p>Определить цель, убрать главный стоп-фактор, собрать первые шаги.</p>
+          <div class="sp-8"></div>
+          <p class="muted">Когда нужно быстро навести порядок, выбрать направление и начать действовать.</p>
         </div>
         <div class="card pkg">
           <h3>8 сессий — “Система и стабильность”</h3>
-          <p>Сделать изменения устойчивыми и пройти путь без откатов.</p>
+          <div class="sp-8"></div>
+          <p class="muted">Когда важно закрепить изменения и пройти путь без откатов.</p>
         </div>
         <div class="card pkg">
           <h3>12 сессий — “Глубокая трансформация”</h3>
-          <p>Для тем, которые тянутся давно, и больших жизненных переходов.</p>
+          <div class="sp-8"></div>
+          <p class="muted">Когда тема тянется давно и нужен устойчивый переход на новый уровень.</p>
         </div>
       </div>
+
+      <div class="sp-16"></div>
+      <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Хочу подобрать контракт</a>
+      <div class="sp-8"></div>
+      <div class="micro">Напиши “Подобрать контракт” — и я уточню пару вопросов.</div>
     </div>
   </section>
 
@@ -621,16 +732,16 @@
       </div>
 
       <div class="test-grid">
-        <div class="shot"><img src="review-1.jpg" alt="Отзыв 1" /></div>
-        <div class="shot"><img src="review-2.jpg" alt="Отзыв 2" /></div>
-        <div class="shot"><img src="review-3.jpg" alt="Отзыв 3" /></div>
-        <div class="shot"><img src="review-4.jpg" alt="Отзыв 4" /></div>
-        <div class="shot"><img src="review-5.jpg" alt="Отзыв 5" /></div>
+        <div class="shot"><img src="review-1.jpg" alt="Отзыв 1" loading="lazy" /></div>
+        <div class="shot"><img src="review-2.jpg" alt="Отзыв 2" loading="lazy" /></div>
+        <div class="shot"><img src="review-3.jpg" alt="Отзыв 3" loading="lazy" /></div>
+        <div class="shot"><img src="review-4.jpg" alt="Отзыв 4" loading="lazy" /></div>
+        <div class="shot"><img src="review-5.jpg" alt="Отзыв 5" loading="lazy" /></div>
       </div>
     </div>
   </section>
 
-  <!-- ВОПРОСЫ -->
+  <!-- FAQ -->
   <section>
     <div class="container">
       <div class="anchor" id="qa"></div>
@@ -643,49 +754,56 @@
 
       <details>
         <summary>Сколько нужно сессий?</summary>
-        <p>Нет одной цифры для всех — зависит от глубины запроса.</p>
+        <p class="muted">Зависит от глубины запроса. Можно начать с 4, а дальше — по динамике. Я помогу выбрать.</p>
       </details>
 
       <details>
         <summary>Чем коуч отличается от психолога?</summary>
-        <p>
-          Психолог чаще работает с внутренними причинами и переживаниями, в том числе с прошлым опытом.
+        <p class="muted">
+          Психолог чаще работает с переживаниями и причинами, в том числе с прошлым опытом.
           Коуч работает с задачей “здесь и сейчас”: цель, решения и действия.
-          Если важно разобраться в состоянии и прошлом — это к психологу. Если важно понять, что делать дальше и как к этому прийти — это коучинг.
         </p>
       </details>
 
       <details>
         <summary>Это терапия?</summary>
-        <p>Нет. Коучинг — это процесс про цели, решения и действия, а не про лечение или диагнозы.</p>
+        <p class="muted">Нет. Коучинг — про цели, решения и действия, а не про лечение или диагнозы.</p>
       </details>
 
       <details>
         <summary>Если я не знаю, чего хочу?</summary>
-        <p>Это нормальный запрос. Мы начнём с прояснения: что важно, что мешает и какой следующий шаг будет самым верным.</p>
+        <p class="muted">Это нормальный запрос. Мы начнём с прояснения: что важно, что мешает и какой следующий шаг самый верный.</p>
+      </details>
+
+      <details>
+        <summary>Что мне написать, чтобы записаться?</summary>
+        <p class="muted">Напиши в Telegram: “Хочу сессию” + 1–2 предложения про ситуацию. Я задам несколько уточняющих вопросов и предложу следующий шаг.</p>
       </details>
     </div>
   </section>
 
-  <!-- ФИНАЛ БЕЗ (а) -->
+  <!-- FINISH -->
   <section>
     <div class="container">
       <div class="anchor" id="contact"></div>
 
       <div class="final">
         <div>
-          <h2>Готов перейти от “я думаю” к “я делаю”?</h2>
+          <h2>Хочешь перейти от мыслей к действиям?</h2>
+          <div class="sp-8"></div>
           <p class="sub">
-            Если устал жить “в голове” и хочешь ясных действий — давай начнём.
-            Первый шаг — написать мне в Telegram и договориться о консультации.
+            Если устал(а) жить “в голове” и хочешь ясных шагов — напиши мне в Telegram.
+            Мы быстро проясним запрос и выберем формат.
           </p>
 
-          <div style="height:14px"></div>
+          <div class="sp-16"></div>
           <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться</a>
+          <div class="sp-8"></div>
+          <div class="micro">Сообщение: “Хочу сессию”</div>
         </div>
 
         <div class="final-photo" aria-label="Фото">
-          <img src="photo-2.jpg" alt="Портрет" />
+          <img src="photo-2.jpg" alt="Портрет" loading="lazy" />
         </div>
       </div>
     </div>
@@ -694,13 +812,22 @@
   <footer>
     <div class="container" style="display:flex; gap:10px; justify-content:space-between; flex-wrap:wrap;">
       <div>© <span id="y"></span> · Коучинг 1:1 онлайн</div>
-      <div style="color:rgba(20,18,16,0.52);">Zoom · 90 минут · Конфиденциально</div>
+      <div class="muted">Zoom · 90 минут · Конфиденциально</div>
     </div>
   </footer>
+
+  <!-- Sticky CTA (mobile) -->
+  <div class="sticky-cta" aria-label="Быстрая запись">
+    <div class="sticky-cta-inner">
+      <div class="micro">Готов(а) начать?</div>
+      <a class="btn btn-primary" href="https://t.me/KarinaS_coach" target="_blank" rel="noopener">Записаться в Telegram</a>
+    </div>
+  </div>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
+    // Active menu highlight
     const links = Array.from(document.querySelectorAll(".menu a"));
     function onScroll(){
       const y = window.scrollY + 120;
@@ -716,13 +843,30 @@
       links.forEach(a => {
         const href = a.getAttribute("href") || "";
         const active = current && href === "#" + current;
-        a.style.color = active ? "rgba(20,18,16,0.92)" : "rgba(20,18,16,0.68)";
+        a.style.color = active ? "#000000" : "rgba(58,58,58,0.78)";
         a.style.borderColor = active ? "rgba(20,18,16,0.18)" : "transparent";
         a.style.background = active ? "rgba(255,255,255,0.55)" : "transparent";
       });
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
+
+    // Hero dots indicator (photo/diploma)
+    const gallery = document.getElementById("heroGallery");
+    const dot1 = document.getElementById("dot1");
+    const dot2 = document.getElementById("dot2");
+
+    function setDots(){
+      if (!gallery) return;
+      const idx = Math.round(gallery.scrollLeft / gallery.clientWidth);
+      dot1.classList.toggle("active", idx === 0);
+      dot2.classList.toggle("active", idx === 1);
+    }
+    if (gallery){
+      gallery.addEventListener("scroll", () => window.requestAnimationFrame(setDots), { passive: true });
+      window.addEventListener("resize", setDots, { passive: true });
+      setDots();
+    }
   </script>
 </body>
 </html>
