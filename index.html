@@ -346,25 +346,114 @@
     }
     .pkg > *{ position: relative; }
 
-    /* REVIEWS — no cropping */
-    .test-grid{
-      display:grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-      align-items: start;
-    }
-    .shot{
+    /* REVIEWS CAROUSEL */
+    .reviews-wrap{
+      position: relative;
       border: 1px solid var(--line);
-      border-radius: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.78);
+      box-shadow: var(--shadow2);
+      padding: 14px;
+    }
+    .reviews-viewport{
       overflow: hidden;
-      background: rgba(255,255,255,0.90);
+      border-radius: 14px;
+    }
+    .reviews-track{
+      display: flex;
+      gap: 12px;
+      transition: transform 0.35s ease;
+      will-change: transform;
+      touch-action: pan-y;
+    }
+    .review-slide{
+      min-width: 100%;
+      flex: 0 0 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.92);
       box-shadow: var(--shadow2);
     }
-    .shot img{
+    .review-slide img{
       width: 100%;
-      height: auto;
+      height: auto;            /* без обрезки */
       object-fit: contain;
       display:block;
+      background: #fff;
+    }
+
+    .reviews-controls{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .reviews-arrows{
+      display:flex;
+      gap: 8px;
+      align-items:center;
+    }
+    .carousel-btn{
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.88);
+      color: var(--title);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor: pointer;
+      transition: background .2s ease, border-color .2s ease, transform .08s ease;
+      box-shadow: var(--shadow2);
+    }
+    .carousel-btn:hover{
+      background: #fff;
+      border-color: rgba(20,18,16,0.18);
+    }
+    .carousel-btn:active{ transform: translateY(1px); }
+    .carousel-btn:disabled{
+      opacity: .45;
+      cursor: default;
+      transform: none;
+    }
+    .carousel-btn svg{
+      width: 18px;
+      height: 18px;
+      display:block;
+    }
+
+    .reviews-dots{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-inline: auto;
+    }
+    .reviews-dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      border: 0;
+      background: rgba(20,18,16,0.18);
+      cursor: pointer;
+      padding: 0;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .reviews-dot.active{
+      background: rgba(20,18,16,0.55);
+      transform: scale(1.15);
+    }
+
+    .reviews-counter{
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+      min-width: 42px;
+      text-align: right;
     }
 
     /* Q&A */
@@ -446,9 +535,6 @@
       margin-top: 30px;
     }
 
-    @media (max-width: 1100px){
-      .test-grid{ grid-template-columns: repeat(2, 1fr); }
-    }
     @media (max-width: 980px){
       .hero-grid{ grid-template-columns: 1fr; }
       .hero-photo{ height: 420px; }
@@ -458,7 +544,20 @@
       .final-photo img{ height: 320px; }
       .menu{ display:none; }
       .nav-inner{ justify-content: space-between; }
-      .test-grid{ grid-template-columns: 1fr; }
+
+      .reviews-wrap{ padding: 10px; }
+      .reviews-controls{
+        gap: 8px;
+        align-items: center;
+      }
+      .carousel-btn{
+        width: 36px;
+        height: 36px;
+      }
+      .reviews-counter{
+        font-size: 12px;
+        min-width: 36px;
+      }
     }
 
     .anchor{ position: relative; top: -76px; visibility: hidden; }
@@ -692,19 +791,46 @@
     </div>
   </section>
 
+  <!-- ОТЗЫВЫ: КАРУСЕЛЬ СО СТРЕЛКАМИ И ТОЧКАМИ -->
   <section>
     <div class="container">
       <div class="anchor" id="reviews"></div>
       <div class="section-head">
-        <div><h2>Отзывы</h2></div>
+        <div>
+          <h2>Отзывы</h2>
+          <p class="sub">Скриншоты переписок публикую с разрешения и без лишних деталей.</p>
+        </div>
       </div>
 
-      <div class="test-grid">
-        <div class="shot"><img src="review-1.jpg" alt="Отзыв 1" loading="lazy" /></div>
-        <div class="shot"><img src="review-2.jpg" alt="Отзыв 2" loading="lazy" /></div>
-        <div class="shot"><img src="review-3.jpg" alt="Отзыв 3" loading="lazy" /></div>
-        <div class="shot"><img src="review-4.jpg" alt="Отзыв 4" loading="lazy" /></div>
-        <div class="shot"><img src="review-5.jpg" alt="Отзыв 5" loading="lazy" /></div>
+      <div class="reviews-wrap" id="reviewsCarousel" aria-label="Карусель отзывов">
+        <div class="reviews-viewport">
+          <div class="reviews-track" id="reviewsTrack">
+            <div class="review-slide"><img src="review-1.jpg" alt="Отзыв 1" loading="lazy" /></div>
+            <div class="review-slide"><img src="review-2.jpg" alt="Отзыв 2" loading="lazy" /></div>
+            <div class="review-slide"><img src="review-3.jpg" alt="Отзыв 3" loading="lazy" /></div>
+            <div class="review-slide"><img src="review-4.jpg" alt="Отзыв 4" loading="lazy" /></div>
+            <div class="review-slide"><img src="review-5.jpg" alt="Отзыв 5" loading="lazy" /></div>
+          </div>
+        </div>
+
+        <div class="reviews-controls">
+          <div class="reviews-arrows">
+            <button class="carousel-btn" id="reviewsPrev" type="button" aria-label="Предыдущий отзыв">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+            </button>
+            <button class="carousel-btn" id="reviewsNext" type="button" aria-label="Следующий отзыв">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="reviews-dots" id="reviewsDots" aria-label="Навигация по отзывам"></div>
+
+          <div class="reviews-counter" id="reviewsCounter">1/5</div>
+        </div>
       </div>
     </div>
   </section>
@@ -787,21 +913,116 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    const gallery = document.getElementById("heroGallery");
+    // HERO photo + diploma dots
+    const heroGallery = document.getElementById("heroGallery");
     const dot1 = document.getElementById("dot1");
     const dot2 = document.getElementById("dot2");
 
-    function setDots(){
-      if (!gallery) return;
-      const idx = Math.round(gallery.scrollLeft / gallery.clientWidth);
+    function setHeroDots(){
+      if (!heroGallery) return;
+      const idx = Math.round(heroGallery.scrollLeft / heroGallery.clientWidth);
       dot1.classList.toggle("active", idx === 0);
       dot2.classList.toggle("active", idx === 1);
     }
 
-    if (gallery){
-      gallery.addEventListener("scroll", () => window.requestAnimationFrame(setDots), { passive: true });
-      window.addEventListener("resize", setDots, { passive: true });
-      setDots();
+    if (heroGallery){
+      heroGallery.addEventListener("scroll", () => window.requestAnimationFrame(setHeroDots), { passive: true });
+      window.addEventListener("resize", setHeroDots, { passive: true });
+      setHeroDots();
+    }
+
+    // REVIEWS carousel (arrows + dots + swipe)
+    const reviewsTrack = document.getElementById("reviewsTrack");
+    const reviewsPrev = document.getElementById("reviewsPrev");
+    const reviewsNext = document.getElementById("reviewsNext");
+    const reviewsDotsWrap = document.getElementById("reviewsDots");
+    const reviewsCounter = document.getElementById("reviewsCounter");
+
+    const reviewSlides = reviewsTrack ? Array.from(reviewsTrack.children) : [];
+    let reviewIndex = 0;
+
+    function buildReviewDots(){
+      if (!reviewsDotsWrap) return;
+      reviewsDotsWrap.innerHTML = "";
+      reviewSlides.forEach((_, i) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "reviews-dot" + (i === 0 ? " active" : "");
+        btn.setAttribute("aria-label", `Перейти к отзыву ${i + 1}`);
+        btn.addEventListener("click", () => goToReview(i));
+        reviewsDotsWrap.appendChild(btn);
+      });
+    }
+
+    function updateReviewCarousel(){
+      if (!reviewsTrack || !reviewSlides.length) return;
+      reviewsTrack.style.transform = `translateX(-${reviewIndex * 100}%)`;
+
+      const dots = reviewsDotsWrap ? Array.from(reviewsDotsWrap.children) : [];
+      dots.forEach((d, i) => d.classList.toggle("active", i === reviewIndex));
+
+      if (reviewsCounter){
+        reviewsCounter.textContent = `${reviewIndex + 1}/${reviewSlides.length}`;
+      }
+
+      if (reviewsPrev) reviewsPrev.disabled = reviewIndex === 0;
+      if (reviewsNext) reviewsNext.disabled = reviewIndex === reviewSlides.length - 1;
+    }
+
+    function goToReview(index){
+      const max = reviewSlides.length - 1;
+      reviewIndex = Math.max(0, Math.min(index, max));
+      updateReviewCarousel();
+    }
+
+    function nextReview(){
+      goToReview(reviewIndex + 1);
+    }
+
+    function prevReview(){
+      goToReview(reviewIndex - 1);
+    }
+
+    if (reviewsTrack && reviewSlides.length){
+      buildReviewDots();
+      updateReviewCarousel();
+
+      reviewsPrev?.addEventListener("click", prevReview);
+      reviewsNext?.addEventListener("click", nextReview);
+
+      // Swipe support
+      let startX = 0;
+      let currentX = 0;
+      let isDragging = false;
+
+      reviewsTrack.addEventListener("touchstart", (e) => {
+        if (!e.touches || !e.touches[0]) return;
+        startX = e.touches[0].clientX;
+        currentX = startX;
+        isDragging = true;
+      }, { passive: true });
+
+      reviewsTrack.addEventListener("touchmove", (e) => {
+        if (!isDragging || !e.touches || !e.touches[0]) return;
+        currentX = e.touches[0].clientX;
+      }, { passive: true });
+
+      reviewsTrack.addEventListener("touchend", () => {
+        if (!isDragging) return;
+        const delta = currentX - startX;
+        const threshold = 50;
+        if (delta <= -threshold) nextReview();
+        else if (delta >= threshold) prevReview();
+        isDragging = false;
+      }, { passive: true });
+
+      // Keyboard support when focused
+      const carouselRoot = document.getElementById("reviewsCarousel");
+      carouselRoot?.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") prevReview();
+        if (e.key === "ArrowRight") nextReview();
+      });
+      carouselRoot?.setAttribute("tabindex", "0");
     }
   </script>
 </body>
